@@ -3,6 +3,9 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
+-- stairs at 0 go up to -X
+
+
 local p = {
   {act = 'fill', node = 'default:stone_block', coords = {0, 79, 20, 40, 0, 79}},
   {act = 'fill', node = 'air', coords = {1, 78, 21, 38, 1, 78}},
@@ -137,6 +140,8 @@ p = {
   {act = 'fill', node = 'air', coords = {3, 16, 21, 3, 59, 2}},
   {act = 'fill', node = 'air', coords = {17, 2, 21, 3, 13, 4}},
   {act = 'fill', node = 'air', coords = {73, 2, 21, 3, 21, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {33, 10, 21, 10, 14, 1}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {60, 1, 21, 10, 3, 10}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do

@@ -1,0 +1,2 @@
+# Set to true to generate ores in the walls
+geomoria_generate_ores (Generate Ores) bool false

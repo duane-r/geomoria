@@ -8,7 +8,7 @@ local max_depth = 31000
 local geomoria_depth = geomoria_mod.geomoria_depth
 
 
--- This tables looks up nodes that aren't already stored.
+-- This table looks up nodes that aren't already stored.
 local node = setmetatable({}, {
 	__index = function(t, k)
 		if not (t and k and type(t) == 'table') then
@@ -51,7 +51,6 @@ local function generate(p_minp, p_maxp, seed)
 
   if write then
     duanes_collision_avoidance = true
-    print('geomoria writes')
 
     vm:set_data(data)
     vm:set_param2_data(p2data)
@@ -64,6 +63,10 @@ local function generate(p_minp, p_maxp, seed)
     end
     vm:update_liquids()
     vm:write_to_map()
+
+    if geomoria_mod.generate_ores then
+      minetest.generate_ores(vm, minp, maxp)
+    end
   end
 end
 

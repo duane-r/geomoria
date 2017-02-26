@@ -37,31 +37,74 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   local rot = math.random(4) - 1
 
   for _, item in pairs(plan) do
-    if item.act == 'fill' then
+    if item.act == 'fill' or item.act == 'stair' then
       local c = item.coords
       local n = item.node
+      local p2 = item.param2
+
+      local c = item.coords
+      local n = item.node
+      local p2 = item.param2
+      if p2 and p2 < 4 then
+        p2 = (p2 + rot) % 4
+      else
+        p2 = nil
+      end
 
       if not (c and n and type(c) == 'table' and type(n) == 'string' and #c == 6) then
         print('Geomoria: Invalid plan')
         return
       end
 
-      local x, z
-      for dz = c[5], c[5] + c[6] - 1 do
-        for dy = c[3], c[3] + c[4] - 1 do
-          for dx = c[1], c[1] + c[2] - 1 do
-            if rot == 0 then
-              x, z = minp.x + dx, minp.z + dz
-            elseif rot == 1 then
-              x, z = minp.x + csize.z - dz - 1, minp.z + dx
-            elseif rot == 2 then
-              x, z = minp.x + csize.x - dx - 1, minp.z + csize.z - dz - 1
-            elseif rot == 3 then
-              x, z = minp.x + dz, minp.z + csize.x - dx - 1
+      if rot == 0 then
+        min_x, max_x = c[1], c[1] + c[2] - 1
+        min_z, max_z = c[5], c[5] + c[6] - 1
+      elseif rot == 1 then
+        min_x, max_x = c[5], c[5] + c[6] - 1
+        min_z, max_z = c[1], c[1] + c[2] - 1
+      elseif rot == 2 then
+        min_x, max_x = csize.x - (c[1] + c[2]), csize.x - c[1] - 1
+        min_z, max_z = csize.x - (c[5] + c[6]), csize.z - c[5] - 1
+      elseif rot == 3 then
+        min_x, max_x = csize.x - (c[5] + c[6]), csize.x - c[5] - 1
+        min_z, max_z = csize.x - (c[1] + c[2]), csize.z - c[1] - 1
+      end
+
+      if item.act == 'fill' then
+        for dz = min_z, max_z do
+          for dy = c[3], c[3] + c[4] - 1 do
+            for dx = min_x, max_x do
+              local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+              data[ivm] = node[n]
+              p2data[ivm] = p2
+              write = true
+            end
+          end
+        end
+      elseif item.act == 'stair' then
+        for dz = min_z, max_z do
+          for dx = min_x, max_x do
+            if p2 == 0 then
+              dy = c[3] + dz - min_z
+            elseif p2 == 1 then
+              dy = c[3] + dx - min_x
+            elseif p2 == 2 then
+              dy = c[3] + max_z - dz
+            elseif p2 == 3 then
+              dy = c[3] + max_x - dx
             end
 
-            local ivm = area:index(x, minp.y + dy, z)
+            for y = c[3], dy - 1 do
+              local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
+              data[ivm] = node['default:stone']
+            end
+            for y = dy + 1, c[3] + c[4] + 1 do
+              local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
+              data[ivm] = node['air']
+            end
+            local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
             data[ivm] = node[n]
+            p2data[ivm] = p2
             write = true
           end
         end

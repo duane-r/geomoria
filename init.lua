@@ -11,6 +11,12 @@ geomoria_mod.plans_keys = {}
 geomoria_mod.geomoria_depth = -8
 
 
+geomoria_mod.generate_ores = minetest.setting_getbool('geomoria_generate_ores')
+if geomoria_mod.generate_ores == nil then
+	geomoria_mod.generate_ores = false
+end
+
+
 geomoria_mod.default_exits = {
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 19, 2}},
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 39, 2}},
