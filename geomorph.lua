@@ -11,17 +11,6 @@ newnode.light_source = 14
 minetest.register_node("geomoria:bright_air", newnode)
 
 
---local exits = {
---  {act = 'fill', node = 'air', coords = {0, 0, 21, 22, 25, 26}},
---  {act = 'fill', node = 'air', coords = {0, 0, 21, 22, 54, 55}},
---  {act = 'fill', node = 'air', coords = {79, 79, 21, 22, 25, 26}},
---  {act = 'fill', node = 'air', coords = {79, 79, 21, 22, 54, 55}},
---  {act = 'fill', node = 'air', coords = {25, 26, 21, 22, 0, 0}},
---  {act = 'fill', node = 'air', coords = {54, 55, 21, 22, 0, 0}},
---  {act = 'fill', node = 'air', coords = {25, 26, 21, 22, 79, 79}},
---  {act = 'fill', node = 'air', coords = {54, 55, 21, 22, 79, 79}},
---}
-
 
 geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 	if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
@@ -33,7 +22,6 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 
 	local index = 0
 	local index3d = 0
-  write = true
 	for z = minp.z, maxp.z do
     for y = minp.y, maxp.y do
       local ivm = area:index(minp.x, y, z)
@@ -45,11 +33,8 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   end
 
   local plan_name = geomoria_mod.plans_keys[math.random(#geomoria_mod.plans_keys)]
-  --local plan = table.copy(geomoria_mod.plans[plan_name])
-  --for _, item in pairs(exits) do
-  --  table.insert(plan, 1, item)
-  --end
   local plan = geomoria_mod.plans[plan_name]
+  local rot = math.random(4) - 1
 
   for _, item in pairs(plan) do
     if item.act == 'fill' then
@@ -61,10 +46,21 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         return
       end
 
-      for dz = c[1], c[2] do
-        for dy = c[3], c[4] do
-          for dx = c[5], c[6] do
-            local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+      local x, z
+      for dz = c[5], c[5] + c[6] - 1 do
+        for dy = c[3], c[3] + c[4] - 1 do
+          for dx = c[1], c[1] + c[2] - 1 do
+            if rot == 0 then
+              x, z = minp.x + dx, minp.z + dz
+            elseif rot == 1 then
+              x, z = minp.x + csize.z - dz - 1, minp.z + dx
+            elseif rot == 2 then
+              x, z = minp.x + csize.x - dx - 1, minp.z + csize.z - dz - 1
+            elseif rot == 3 then
+              x, z = minp.x + dz, minp.z + csize.x - dx - 1
+            end
+
+            local ivm = area:index(x, minp.y + dy, z)
             data[ivm] = node[n]
             write = true
           end

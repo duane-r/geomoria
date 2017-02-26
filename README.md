@@ -12,4 +12,4 @@ Code: LGPL2
 
 Mod dependencies: default
 
-Download: https://github.com/duane-r/ramoid/archive/master.zip
+Download: https://github.com/duane-r/geomoria/archive/master.zip

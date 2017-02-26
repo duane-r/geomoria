@@ -12,18 +12,18 @@ geomoria_mod.geomoria_depth = -8
 
 
 geomoria_mod.default_exits = {
-  {act = 'fill', node = 'air', coords = {0, 0, 21, 22, 19, 20}},
-  {act = 'fill', node = 'air', coords = {0, 0, 21, 22, 39, 40}},
-  {act = 'fill', node = 'air', coords = {0, 0, 21, 22, 59, 60}},
-  {act = 'fill', node = 'air', coords = {79, 79, 21, 22, 19, 20}},
-  {act = 'fill', node = 'air', coords = {79, 79, 21, 22, 39, 40}},
-  {act = 'fill', node = 'air', coords = {79, 79, 21, 22, 59, 60}},
-  {act = 'fill', node = 'air', coords = {19, 20, 21, 22, 0, 0}},
-  {act = 'fill', node = 'air', coords = {39, 40, 21, 22, 0, 0}},
-  {act = 'fill', node = 'air', coords = {59, 60, 21, 22, 0, 0}},
-  {act = 'fill', node = 'air', coords = {19, 20, 21, 22, 79, 79}},
-  {act = 'fill', node = 'air', coords = {39, 40, 21, 22, 79, 79}},
-  {act = 'fill', node = 'air', coords = {59, 60, 21, 22, 79, 79}},
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 0, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 1}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 1}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 79, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 79, 1}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 79, 1}},
 }
 
 
