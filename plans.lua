@@ -155,6 +155,8 @@ p = {
   {act = 'fill', node = 'air', coords = {61, 2, 31, 4, 22, 34}},
   {act = 'fill', node = 'air', coords = {36, 25, 31, 4, 22, 2}},
   {act = 'fill', node = 'air', coords = {3, 3, 21, 3, 58, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {61, 2, 31, 4, 55, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {36, 1, 31, 4, 22, 2}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do

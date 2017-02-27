@@ -44,6 +44,11 @@ function geomoria_mod.clone_node(name)
 end
 
 
+local node = geomoria_mod.clone_node('default:stone')
+node.walkable = false
+minetest.register_node('geomoria:false_wall', node)
+
+
 dofile(geomoria_mod.path .. "/plans.lua")
 
 for k, v in pairs(geomoria_mod.plans) do
