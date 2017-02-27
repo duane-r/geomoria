@@ -49,7 +49,38 @@ local function generate(p_minp, p_maxp, seed)
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 
+  local fissure_noise
+  if geomoria_mod.add_fissures then
+    fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.7, lacunarity = 2}, csize):get3dMap_flat(minp)
+  end
+
   local write = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)
+
+  if fissure_noise then
+    local index = 1
+    for z = minp.z, maxp.z do
+      for y = minp.y, maxp.y do
+        local noise_cut = (math.abs(20 - (y - minp.y)) / 30) + 0.5
+        local ivm = area:index(minp.x, y, z)
+        for x = minp.x, maxp.x do
+          if fissure_noise[index] > noise_cut then
+            if data[ivm] ~= node['default:water_source'] and data[ivm] ~= node['default:water_source'] then
+              data[ivm] = node['air']
+            end
+          elseif (data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block']) and math.random(4) == 1 then
+            if math.random(2) == 1 then
+              data[ivm] = node['default:cobble']
+            else
+              data[ivm] = node['default:mossycobble']
+            end
+          end
+
+          ivm = ivm + 1
+          index = index + 1
+        end
+      end
+    end
+  end
 
   if write then
     duanes_collision_avoidance = true

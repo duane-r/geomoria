@@ -16,6 +16,11 @@ if geomoria_mod.generate_ores == nil then
 	geomoria_mod.generate_ores = false
 end
 
+geomoria_mod.add_fissures = minetest.setting_getbool('geomoria_add_fissures')
+if geomoria_mod.add_fissures == nil then
+	geomoria_mod.add_fissures = true
+end
+
 
 geomoria_mod.default_exits = {
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 19, 2}},

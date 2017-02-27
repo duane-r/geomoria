@@ -1,2 +1,5 @@
 # Set to true to generate ores in the walls
 geomoria_generate_ores (Generate Ores) bool false
+
+# Set to true to add fissures and chasms
+geomoria_add_fissures (Add Fissures) bool true
