@@ -56,7 +56,7 @@ local function generate(p_minp, p_maxp, seed)
 
   local write = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)
 
-  if fissure_noise then
+  if not DEBUG and fissure_noise then
     local index = 1
     for z = minp.z, maxp.z do
       for y = minp.y, maxp.y do

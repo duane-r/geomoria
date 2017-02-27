@@ -77,16 +77,41 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
       end
 
       if item.act == 'fill' or item.act == 'ladder' then
+        if item.line then
+          for dz = min_z - 1, max_z + 1 do
+            for dy = c[3] - 1, c[3] + c[4] do
+              for dx = min_x - 1, max_x + 1 do
+                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                if data[ivm] == node['default:stone'] then
+                  data[ivm] = node[item.line]
+                end
+              end
+            end
+          end
+        elseif item.floor then
+          for dz = min_z - 1, max_z + 1 do
+            for dy = c[3] - 1, c[3] - 1 do
+              for dx = min_x - 1, max_x + 1 do
+                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                if data[ivm] == node['default:stone'] then
+                  data[ivm] = node[item.floor]
+                end
+              end
+            end
+          end
+        end
+
         for dz = min_z, max_z do
           for dy = c[3], c[3] + c[4] - 1 do
             for dx = min_x, max_x do
               local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
               data[ivm] = node[n]
               p2data[ivm] = p2
-              write = true
             end
           end
         end
+
+        write = true
       elseif item.act == 'stair' then
         for dz = min_z, max_z do
           for dx = min_x, max_x do
@@ -104,16 +129,16 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['default:stone']
             end
-            for y = dy + 1, c[3] + c[4] + 1 do
+            for y = dy + 1, c[3] + c[4] + 2 do
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['air']
             end
             local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
             data[ivm] = node[n]
             p2data[ivm] = p2
-            write = true
           end
         end
+        write = true
       end
     end
   end

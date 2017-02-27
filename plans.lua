@@ -5,6 +5,7 @@
 
 -- Rotation:
 -- 0 Z+   1 X+   2 Z-   3 X-
+-- ladders:  2 X+   3 X-   4 Z+   5 Z-
 
 
 local p = {
@@ -164,3 +165,106 @@ for _, item in pairs(geomoria_mod.default_exits) do
 end
 
 geomoria_mod.plans['market'] = table.copy(p)
+
+
+p = {
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 76, 4}},
+  {act = 'fill', node = 'air', coords = {5, 16, 21, 3, 74, 2}},
+  {act = 'fill', node = 'air', coords = {3, 2, 21, 3, 70, 6}},
+  {act = 'fill', node = 'air', coords = {5, 20, 21, 3, 70, 2}},
+  {act = 'fill', node = 'air', coords = {23, 2, 21, 3, 72, 6}},
+  {act = 'fill', node = 'air', coords = {25, 5, 21, 3, 76, 2}},
+  {act = 'fill', node = 'air', coords = {28, 2, 21, 3, 60, 16}},
+  {act = 'fill', node = 'air', coords = {28, 27, 21, 3, 58, 2}},
+  {act = 'fill', node = 'air', coords = {53, 2, 21, 3, 41, 17}},
+  {act = 'fill', node = 'air', coords = {50, 5, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 73, 6}},
+  {act = 'fill', node = 'air', coords = {32, 20, 21, 3, 71, 2}},
+  {act = 'fill', node = 'air', coords = {52, 16, 21, 15, 63, 16}},
+  {act = 'fill', node = 'air', coords = {75, 5, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {1, 2, 21, 3, 52, 15}},
+  {act = 'fill', node = 'air', coords = {3, 8, 21, 3, 52, 2}},
+  {act = 'fill', node = 'air', coords = {9, 2, 21, 3, 54, 9}},
+  {act = 'fill', node = 'air', coords = {11, 14, 21, 3, 61, 2}},
+  {act = 'fill', node = 'air', coords = {23, 2, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {13, 12, 21, 3, 57, 2}},
+  {act = 'fill', node = 'air', coords = {13, 2, 21, 3, 55, 2}},
+  {act = 'fill', node = 'air', coords = {13, 37, 21, 3, 53, 2}},
+  {act = 'fill', node = 'air', coords = {48, 2, 21, 3, 50, 3}},
+  {act = 'fill', node = 'air', coords = {0, 5, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {3, 2, 21, 3, 41, 9}},
+  {act = 'fill', node = 'air', coords = {5, 25, 21, 3, 48, 2}},
+  {act = 'fill', node = 'air', coords = {4, 4, 21, 3, 25, 2}},
+  {act = 'fill', node = 'air', coords = {8, 2, 21, 3, 25, 19}},
+  {act = 'fill', node = 'air', coords = {8, 13, 21, 3, 44, 2}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 23, 21}},
+  {act = 'fill', node = 'air', coords = {21, 9, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {1, 78, 21, 15, 17, 6}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 0, 5}},
+  {act = 'fill', node = 'air', coords = {2, 17, 21, 3, 3, 2}},
+  {act = 'fill', node = 'air', coords = {2, 2, 21, 3, 5, 10}},
+  {act = 'fill', node = 'air', coords = {4, 33, 21, 3, 13, 2}},
+  {act = 'fill', node = 'air', coords = {6, 6, 21, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {6, 2, 21, 3, 11, 2}},
+  {act = 'fill', node = 'air', coords = {35, 2, 21, 3, 11, 2}},
+  {act = 'fill', node = 'air', coords = {35, 15, 21, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 17}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 23, 13}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 17}},
+  {act = 'fill', node = 'air', coords = {59, 20, 21, 3, 36, 8}},
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {30, 20, 21, 15, 30, 20}},
+
+  {act = 'fill', node = 'air', coords = {13, 2, 31, 3, 55, 22}},
+  {act = 'fill', node = 'air', coords = {15, 2, 31, 3, 75, 2}},
+  {act = 'fill', node = 'air', coords = {17, 2, 31, 3, 45, 32}},
+  {act = 'fill', node = 'air', coords = {4, 11, 31, 3, 53, 2}},
+  {act = 'fill', node = 'air', coords = {4, 2, 31, 3, 25, 28}},
+  {act = 'fill', node = 'air', coords = {8, 11, 31, 3, 35, 10}},
+  {act = 'fill', node = 'air', coords = {8, 11, 31, 3, 24, 10}},
+  {act = 'fill', node = 'air', coords = {20, 2, 31, 3, 11, 6}},
+  {act = 'fill', node = 'air', coords = {20, 2, 31, 3, 23, 18}},
+  {act = 'fill', node = 'air', coords = {22, 8, 31, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {32, 2, 31, 3, 52, 9}},
+  {act = 'fill', node = 'air', coords = {34, 7, 31, 3, 52, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 31, 3, 50, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 31, 3, 23, 7}},
+  {act = 'fill', node = 'air', coords = {39, 2, 31, 3, 5, 12}},
+  {act = 'fill', node = 'air', coords = {41, 24, 31, 3, 5, 2}},
+  {act = 'fill', node = 'air', coords = {58, 2, 31, 3, 11, 6}},
+  {act = 'fill', node = 'air', coords = {58, 2, 31, 3, 23, 40}},
+  {act = 'fill', node = 'air', coords = {50, 8, 31, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {63, 2, 31, 3, 58, 3}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {3, 10, 21, 10, 65, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {12, 10, 21, 10, 9, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {50, 10, 21, 10, 9, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {65, 10, 21, 10, 59, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {32, 2, 21, 10, 61, 10}},
+  {act = 'ladder', node = 'default:ladder_steel', param2 = 3, coords = {4, 1, 21, 10, 25, 1}},
+  {act = 'fill', node = 'air', coords = {59, 1, 21, 3, 9, 2}},
+
+  {act = 'fill', node = 'air', coords = {63, 2, 41, 3, 17, 31}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {63, 2, 31, 10, 48, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {63, 2, 31, 10, 7, 10}},
+
+  {act = 'fill', node = 'default:stone', coords = {20, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = 'default:stone', coords = {39, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = 'default:stone', coords = {58, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = 'default:stone', coords = {56, 6, 30, 1, 63, 3}},
+  {act = 'fill', node = 'default:stone', coords = {39, 2, 30, 1, 30, 20}},
+  {act = 'fill', node = 'default:stone', coords = {30, 20, 30, 1, 39, 2}},
+
+  {act = 'fill', node = 'geomoria:false_wall', coords = {1, 2, 21, 3, 58, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {21, 1, 21, 3, 39, 2}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {6, 2, 21, 3, 12, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {38, 1, 21, 3, 9, 2}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {41, 1, 21, 3, 9, 2}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {59, 2, 21, 3, 23, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {13, 2, 31, 3, 67, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {13, 2, 31, 3, 34, 1}},
+}
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+geomoria_mod.plans['silly straw'] = table.copy(p)

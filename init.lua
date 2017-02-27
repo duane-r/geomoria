@@ -53,6 +53,10 @@ local node = geomoria_mod.clone_node('default:stone')
 node.walkable = false
 minetest.register_node('geomoria:false_wall', node)
 
+local node = geomoria_mod.clone_node('default:stone_block')
+node.walkable = false
+minetest.register_node('geomoria:false_wall_block', node)
+
 
 dofile(geomoria_mod.path .. "/plans.lua")
 
