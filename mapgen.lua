@@ -33,7 +33,9 @@ local function generate(p_minp, p_maxp, seed)
 	local minp, maxp = p_minp, p_maxp
   local avg = (minp.y + maxp.y) / 2
   if avg < (geomoria_depth - 1) * 80 - 32 or avg > geomoria_depth * 80 - 32 then
-    return
+    if not DEBUG then
+      return
+    end
   end
 
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")

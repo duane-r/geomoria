@@ -57,7 +57,7 @@ for z = 7, 78, 9 do
   end
 end
 
---geomoria_mod.plans['pillared room'] = table.copy(p)
+geomoria_mod.plans['pillared room'] = table.copy(p)
 
 
 p = {
@@ -65,6 +65,11 @@ p = {
   {act = 'fill', node = 'default:water_source', coords = {20, 51, 11, 10, 11, 50}},
   {act = 'fill', node = 'default:stone', coords = {38, 17, 11, 10, 30, 16}},
   {act = 'fill', node = 'default:stone', coords = {39, 2, 11, 10, 11, 19}},
+  {act = 'fill', node = 'default:water_source', coords = {49, 30, 11, 5, 62, 17}},
+  {act = 'fill', node = 'default:water_source', coords = {17, 32, 11, 2, 69, 2}},
+  {act = 'fill', node = 'default:water_source', coords = {43, 2, 11, 2, 61, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {17, 2, 11, 2, 23, 46}},
+  {act = 'fill', node = 'default:water_source', coords = {1, 18, 11, 5, 1, 22}},
   {act = 'fill', node = 'air', coords = {56, 8, 21, 5, 1, 5}},
   {act = 'fill', node = 'air', coords = {16, 8, 21, 5, 1, 5}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 11}},
@@ -96,13 +101,14 @@ p = {
   {act = 'fill', node = 'air', coords = {58, 2, 21, 3, 5, 2}},
   {act = 'fill', node = 'air', coords = {21, 28, 21, 3, 73, 2}},
   {act = 'fill', node = 'air', coords = {16, 2, 21, 3, 56, 6}},
+  {act = 'ladder', node = 'default:ladder_steel', param2 = 5, coords = {78, 1, 11, 10, 62, 1}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
---geomoria_mod.plans['reservoir'] = table.copy(p)
+geomoria_mod.plans['reservoir'] = table.copy(p)
 
 
 p = {
@@ -139,12 +145,16 @@ p = {
   {act = 'fill', node = 'air', coords = {60, 1, 21, 3, 30, 2}},
   {act = 'fill', node = 'air', coords = {73, 2, 21, 3, 34, 12}},
   {act = 'fill', node = 'air', coords = {3, 16, 21, 3, 59, 2}},
-  {act = 'fill', node = 'air', coords = {17, 2, 21, 3, 13, 4}},
-  {act = 'fill', node = 'air', coords = {21, 15, 31, 4, 14, 15}},
+  {act = 'fill', node = 'air', coords = {11, 25, 31, 4, 14, 10}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {33, 10, 21, 10, 14, 1}},
   {act = 'fill', node = 'air', coords = {61, 13, 31, 4, 56, 19}},
   {act = 'ladder', node = 'default:ladder_steel', param2 = 4, coords = {63, 1, 21, 10, 74, 1}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {73, 1, 21, 10, 49, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {6, 10, 21, 10, 58, 1}},
+  {act = 'fill', node = 'air', coords = {16, 2, 31, 4, 24, 35}},
+  {act = 'fill', node = 'air', coords = {61, 2, 31, 4, 22, 34}},
+  {act = 'fill', node = 'air', coords = {36, 25, 31, 4, 22, 2}},
+  {act = 'fill', node = 'air', coords = {3, 3, 21, 3, 58, 1}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
