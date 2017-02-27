@@ -3,7 +3,8 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
--- stairs at 0 go up to -X
+-- Rotation:
+-- 0 Z+   1 X+   2 Z-   3 X-
 
 
 local p = {
@@ -56,7 +57,7 @@ for z = 7, 78, 9 do
   end
 end
 
-geomoria_mod.plans['pillared room'] = table.copy(p)
+--geomoria_mod.plans['pillared room'] = table.copy(p)
 
 
 p = {
@@ -101,7 +102,7 @@ for _, item in pairs(geomoria_mod.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['reservoir'] = table.copy(p)
+--geomoria_mod.plans['reservoir'] = table.copy(p)
 
 
 p = {
@@ -114,7 +115,7 @@ p = {
   {act = 'fill', node = 'air', coords = {73, 5, 21, 3, 23, 11}},
   {act = 'fill', node = 'air', coords = {75, 5, 21, 3, 39, 2}},
   {act = 'fill', node = 'air', coords = {71, 9, 21, 3, 59, 2}},
-  {act = 'fill', node = 'air', coords = {69, 2, 21, 3, 23, 41}},
+  {act = 'fill', node = 'air', coords = {69, 2, 21, 3, 23, 38}},
   {act = 'fill', node = 'air', coords = {21, 50, 21, 3, 21, 2}},
   {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 21, 59}},
   {act = 'fill', node = 'air', coords = {39, 22, 21, 3, 77, 2}},
@@ -139,9 +140,11 @@ p = {
   {act = 'fill', node = 'air', coords = {73, 2, 21, 3, 34, 12}},
   {act = 'fill', node = 'air', coords = {3, 16, 21, 3, 59, 2}},
   {act = 'fill', node = 'air', coords = {17, 2, 21, 3, 13, 4}},
-  {act = 'fill', node = 'air', coords = {73, 2, 21, 3, 21, 2}},
-  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {33, 10, 21, 10, 14, 1}},
-  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {60, 1, 21, 10, 3, 10}},
+  {act = 'fill', node = 'air', coords = {21, 15, 31, 4, 14, 15}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {33, 10, 21, 10, 14, 1}},
+  {act = 'fill', node = 'air', coords = {61, 13, 31, 4, 56, 19}},
+  {act = 'ladder', node = 'default:ladder_steel', param2 = 4, coords = {63, 1, 21, 10, 74, 1}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {73, 1, 21, 10, 49, 10}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do

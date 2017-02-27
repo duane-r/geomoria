@@ -37,15 +37,19 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   local rot = math.random(4) - 1
 
   for _, item in pairs(plan) do
-    if item.act == 'fill' or item.act == 'stair' then
+    if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' then
       local c = item.coords
       local n = item.node
       local p2 = item.param2
 
-      local c = item.coords
-      local n = item.node
-      local p2 = item.param2
-      if p2 and p2 < 4 then
+      if p2 and item.act == 'ladder' then
+        -- 2 X+   3 X-   4 Z+   5 Z-
+        local tran = '4253'
+        local fp2 = tran:find(tostring(p2)) - 1
+        p2 = (fp2 + rot) % 4
+        p2 = tonumber(tran:sub(p2 + 1, p2 + 1))
+      elseif p2 and p2 < 4 then
+        --p2 = math.floor(p2 / 4) * 4 + (p2 + rot) % 4
         p2 = (p2 + rot) % 4
       else
         p2 = nil
@@ -56,21 +60,23 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         return
       end
 
+      local min_x, max_x, min_y, max_y, min_z, max_z, dy
+
       if rot == 0 then
         min_x, max_x = c[1], c[1] + c[2] - 1
         min_z, max_z = c[5], c[5] + c[6] - 1
       elseif rot == 1 then
         min_x, max_x = c[5], c[5] + c[6] - 1
-        min_z, max_z = c[1], c[1] + c[2] - 1
+        min_z, max_z = csize.x - (c[1] + c[2]), csize.x - c[1] - 1
       elseif rot == 2 then
         min_x, max_x = csize.x - (c[1] + c[2]), csize.x - c[1] - 1
-        min_z, max_z = csize.x - (c[5] + c[6]), csize.z - c[5] - 1
+        min_z, max_z = csize.z - (c[5] + c[6]), csize.z - c[5] - 1
       elseif rot == 3 then
-        min_x, max_x = csize.x - (c[5] + c[6]), csize.x - c[5] - 1
-        min_z, max_z = csize.x - (c[1] + c[2]), csize.z - c[1] - 1
+        min_x, max_x = csize.z - (c[5] + c[6]), csize.z - c[5] - 1
+        min_z, max_z = c[1], c[1] + c[2] - 1
       end
 
-      if item.act == 'fill' then
+      if item.act == 'fill' or item.act == 'ladder' then
         for dz = min_z, max_z do
           for dy = c[3], c[3] + c[4] - 1 do
             for dx = min_x, max_x do
