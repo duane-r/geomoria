@@ -295,3 +295,126 @@ for _, item in pairs(geomoria_mod.default_exits) do
 end
 
 geomoria_mod.plans['lake of fire'] = table.copy(p)
+
+
+local node = geomoria_mod.clone_node('default:water_source')
+node.liquid_range = 2
+node.liquid_alternative_flowing = "geomoria:water_flowing_tame"
+node.liquid_alternative_source = "geomoria:water_source_tame"
+minetest.register_node('geomoria:water_source_tame', node)
+
+local node = geomoria_mod.clone_node('default:water_flowing')
+node.liquid_range = 2
+node.liquid_alternative_flowing = "geomoria:water_flowing_tame"
+node.liquid_alternative_source = "geomoria:water_source_tame"
+minetest.register_node('geomoria:water_flowing_tame', node)
+
+p = {
+  {act = 'fill', node = 'air', coords = {29, 2, 11, 3, 55, 16}},
+  {act = 'fill', node = 'air', coords = {25, 4, 11, 3, 69, 2}},
+  {act = 'fill', node = 'air', coords = {25, 4, 11, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {9, 2, 11, 3, 9, 62}},
+  {act = 'fill', node = 'air', coords = {11, 4, 11, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {11, 4, 11, 3, 24, 2}},
+  {act = 'fill', node = 'air', coords = {11, 4, 11, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {11, 4, 11, 3, 54, 2}},
+  {act = 'fill', node = 'air', coords = {11, 4, 11, 3, 69, 2}},
+  {act = 'fill', node = 'air', coords = {49, 12, 11, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {49, 2, 11, 3, 55, 4}},
+  {act = 'fill', node = 'air', coords = {26, 30, 11, 6, 25, 30}},
+  {act = 'fill', node = 'air', coords = {49, 2, 11, 3, 19, 6}},
+  {act = 'fill', node = 'air', coords = {29, 2, 11, 3, 9, 16}},
+  {act = 'fill', node = 'air', coords = {15, 10, 11, 6, 5, 10}},
+  {act = 'fill', node = 'air', coords = {15, 10, 11, 6, 20, 10}},
+  {act = 'fill', node = 'air', coords = {15, 10, 11, 6, 35, 10}},
+  {act = 'fill', node = 'air', coords = {15, 10, 11, 6, 50, 10}},
+  {act = 'fill', node = 'air', coords = {15, 10, 11, 6, 65, 10}},
+  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 8, 4}},
+  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 23, 4}},
+  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 38, 4}},
+  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 53, 4}},
+  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 68, 4}},
+  {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 9, 2}},
+  {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 24, 2}},
+  {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 39, 2}},
+  {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 54, 2}},
+  {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 69, 2}},
+
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {61, 10, 11, 10, 59, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {39, 2, 11, 10, 1, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {39, 10, 11, 10, 19, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 11, 14}},
+  {act = 'fill', node = 'default:stone', coords = {61, 1, 21, 6, 59, 2}},
+
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 8, 0, 80}},
+  {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 56, 8}},
+  {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 36, 8}},
+  {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 16, 8}},
+  {act = 'fill', node = 'air', coords = {4, 2, 21, 3, 64, 7}},
+  {act = 'fill', node = 'air', coords = {6, 4, 21, 3, 69, 2}},
+  {act = 'fill', node = 'air', coords = {4, 2, 21, 3, 44, 12}},
+  {act = 'fill', node = 'air', coords = {6, 4, 21, 3, 49, 2}},
+  {act = 'fill', node = 'air', coords = {4, 2, 21, 3, 24, 12}},
+  {act = 'fill', node = 'air', coords = {6, 4, 21, 3, 29, 2}},
+  {act = 'fill', node = 'air', coords = {4, 2, 21, 3, 9, 7}},
+  {act = 'fill', node = 'air', coords = {6, 4, 21, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {31, 8, 21, 4, 56, 8}},
+  {act = 'fill', node = 'air', coords = {31, 8, 21, 4, 36, 8}},
+  {act = 'fill', node = 'air', coords = {31, 8, 21, 4, 16, 8}},
+  {act = 'fill', node = 'air', coords = {34, 2, 21, 3, 64, 5}},
+  {act = 'fill', node = 'air', coords = {30, 9, 21, 3, 69, 2}},
+  {act = 'fill', node = 'air', coords = {34, 2, 21, 3, 44, 12}},
+  {act = 'fill', node = 'air', coords = {30, 4, 21, 3, 49, 2}},
+  {act = 'fill', node = 'air', coords = {34, 2, 21, 3, 24, 12}},
+  {act = 'fill', node = 'air', coords = {30, 4, 21, 3, 29, 2}},
+  {act = 'fill', node = 'air', coords = {34, 2, 21, 3, 9, 7}},
+  {act = 'fill', node = 'air', coords = {30, 4, 21, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {71, 9, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {39, 41, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {71, 9, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 80}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 69, 11}},
+
+  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 5, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 6, 8}},
+  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 9, 2}},
+  {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 9, 2}},
+  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 20, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 21, 8}},
+  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 24, 2}},
+  {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 24, 2}},
+  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 35, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 36, 8}},
+  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 39, 2}},
+  {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 39, 2}},
+  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 50, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 51, 8}},
+  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 54, 2}},
+  {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 54, 2}},
+  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 65, 10}},
+  {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 66, 8}},
+  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 69, 2}},
+  {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 69, 2}},
+
+  {act = 'fill', node = 'air', coords = {51, 20, 31, 5, 65, 10}},
+  {act = 'fill', node = 'air', coords = {51, 10, 31, 5, 15, 10}},
+  {act = 'fill', node = 'air', coords = {55, 2, 31, 3, 25, 27}},
+  {act = 'fill', node = 'air', coords = {60, 2, 31, 3, 41, 24}},
+  {act = 'fill', node = 'air', coords = {57, 8, 31, 3, 39, 2}},
+  {act = 'fill', node = 'default:stone', coords = {54, 4, 11, 6, 49, 4}},
+  {act = 'fill', node = 'air', coords = {55, 2, 6, 25, 50, 2}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {55, 2, 30, 1, 50, 2}},
+  {act = 'fill', node = 'air', coords = {65, 10, 31, 5, 35, 10}},
+  {act = 'fill', node = 'air', coords = {69, 2, 31, 3, 45, 5}},
+  {act = 'fill', node = 'air', coords = {65, 10, 31, 5, 50, 10}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {57, 1, 31, 3, 39, 2}},
+
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {61, 10, 21, 10, 19, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {41, 10, 21, 10, 69, 2}},
+}
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+geomoria_mod.plans['fountain court'] = table.copy(p)
