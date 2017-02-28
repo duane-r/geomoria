@@ -389,3 +389,61 @@ for _, item in pairs(geomoria_mod.default_exits) do
 end
 
 geomoria_mod.plans['fountain court'] = table.copy(p)
+
+
+p = {
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 0, 80}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 80}},
+  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 80}},
+  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 19, 2}},
+}
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+geomoria_mod.plans['crossroads'] = table.copy(p)
+
+
+p = {
+  {act = 'fill', node = 'default:dirt', coords = {5, 70, 19, 2, 5, 70}},
+  {act = 'fill', node = 'air', coords = {5, 70, 21, 7, 5, 70}},
+  {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 21, 1, 5, 70}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 75, 5}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 75, 5}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 75, 5}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 0, 5}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 5}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 5}},
+  {act = 'fill', node = 'air', coords = {0, 5, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {0, 5, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {0, 5, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {75, 5, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {75, 5, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {75, 5, 21, 3, 59, 2}},
+
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {61, 10, 21, 10, 75, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {9, 10, 21, 10, 3, 2}},
+  {act = 'fill', node = 'default:dirt', coords = {5, 70, 29, 2, 5, 70}},
+  {act = 'fill', node = 'air', coords = {5, 70, 31, 7, 5, 70}},
+  {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 31, 1, 5, 70}},
+  {act = 'fill', node = 'air', coords = {71, 6, 31, 3, 75, 2}},
+  {act = 'fill', node = 'air', coords = {3, 6, 31, 3, 3, 2}},
+
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {75, 2, 31, 10, 65, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {3, 2, 31, 10, 5, 10}},
+
+  {act = 'fill', node = 'default:dirt', coords = {5, 70, 39, 2, 5, 70}},
+  {act = 'fill', node = 'air', coords = {5, 70, 41, 7, 5, 70}},
+  {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 41, 1, 5, 70}},
+  {act = 'fill', node = 'air', coords = {75, 2, 41, 3, 60, 5}},
+  {act = 'fill', node = 'air', coords = {3, 2, 41, 3, 15, 5}},
+}
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+geomoria_mod.plans['mushroom garden'] = table.copy(p)

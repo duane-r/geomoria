@@ -142,9 +142,11 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         for dz = min_z, max_z do
           for dy = c[3], c[3] + c[4] - 1 do
             for dx = min_x, max_x do
-              local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-              data[ivm] = node[n]
-              p2data[ivm] = p2
+              if not item.random or math.random(item.random) == 1 then
+                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                data[ivm] = node[n]
+                p2data[ivm] = p2
+              end
             end
           end
         end
