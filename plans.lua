@@ -268,3 +268,30 @@ for _, item in pairs(geomoria_mod.default_exits) do
 end
 
 geomoria_mod.plans['silly straw'] = table.copy(p)
+
+
+p = {
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {1, 78, 21, 5, 1, 78}},
+  {act = 'fill', node = 'default:stone', coords = {9, 62, 21, 1, 9, 62}},
+  {act = 'fill', node = 'default:stone', coords = {9, 62, 23, 5, 9, 62}},
+  {act = 'fill', node = 'air', coords = {10, 60, 11, 25, 10, 60}},
+  {act = 'fill', node = 'default:lava_source', coords = {10, 60, 11, 5, 10, 60}},
+  {act = 'fill', node = 'default:stone', coords = {25, 30, 11, 9, 25, 30}},
+  {act = 'fill', node = 'default:stone_block', coords = {25, 30, 20, 1, 25, 30}},
+  {act = 'fill', node = 'default:stone', coords = {39, 2, 20, 1, 55, 15}},
+  {act = 'fill', node = 'default:stone', coords = {39, 2, 20, 1, 10, 15}},
+  {act = 'fill', node = 'default:stone', coords = {10, 15, 20, 1, 39, 2}},
+  {act = 'fill', node = 'default:stone', coords = {55, 15, 20, 1, 39, 2}},
+  {act = 'fill', node = 'air', coords = {70, 1, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {9, 1, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 70, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 9, 1}},
+  {act = 'fill', node = 'default:stone', coords = {37, 6, 20, 2, 37, 6}},
+  {act = 'fill', node = 'default:lava_source', coords = {38, 4, 20, 2, 38, 4}},
+}
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+geomoria_mod.plans['lake of fire'] = table.copy(p)

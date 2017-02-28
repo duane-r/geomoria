@@ -51,7 +51,7 @@ local function generate(p_minp, p_maxp, seed)
 
   local fissure_noise
   if geomoria_mod.add_fissures then
-    fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.7, lacunarity = 2}, csize):get3dMap_flat(minp)
+    fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.5, lacunarity = 2}, csize):get3dMap_flat(minp)
   end
 
   local write = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)

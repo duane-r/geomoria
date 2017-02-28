@@ -8,7 +8,7 @@ geomoria_mod.path = minetest.get_modpath(minetest.get_current_modname())
 geomoria_mod.world = minetest.get_worldpath()
 geomoria_mod.plans = {}
 geomoria_mod.plans_keys = {}
-geomoria_mod.geomoria_depth = -8
+geomoria_mod.geomoria_depth = -2
 
 
 geomoria_mod.generate_ores = minetest.setting_getbool('geomoria_generate_ores')
