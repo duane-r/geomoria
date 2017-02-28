@@ -21,6 +21,11 @@ if geomoria_mod.add_fissures == nil then
 	geomoria_mod.add_fissures = true
 end
 
+geomoria_mod.cheap_lighting = minetest.setting_getbool('geomoria_cheap_lighting')
+if geomoria_mod.cheap_lighting == nil then
+	geomoria_mod.cheap_lighting = false
+end
+
 
 geomoria_mod.default_exits = {
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 19, 2}},

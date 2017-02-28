@@ -26,7 +26,9 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
     for y = minp.y, maxp.y do
       local ivm = area:index(minp.x, y, z)
       for x = minp.x, maxp.x do
-        data[ivm] = node['default:stone']
+        if not geomoria_mod.generate_ores or data[ivm] == node['air'] or data[ivm] == node['default:lava_source'] or data[ivm] == node['default:water_source'] then
+          data[ivm] = node['default:stone']
+        end
         ivm = ivm + 1
       end
     end
@@ -88,13 +90,49 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               end
             end
           end
-        elseif item.floor then
+        end
+        if item.floor then
           for dz = min_z - 1, max_z + 1 do
-            for dy = c[3] - 1, c[3] - 1 do
-              for dx = min_x - 1, max_x + 1 do
-                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                if data[ivm] == node['default:stone'] then
-                  data[ivm] = node[item.floor]
+            for dx = min_x - 1, max_x + 1 do
+              local ivm = area:index(minp.x + dx, minp.y + c[3] - 1, minp.z + dz)
+              if data[ivm] == node['default:stone'] then
+                data[ivm] = node[item.floor]
+              end
+            end
+          end
+        end
+
+        if geomoria_mod.cheap_lighting and item.node == 'air' then
+          if c[4] < 13 and c[2] > 10 and c[6] > 10 then
+            for dz = min_z, max_z do
+              for dx = min_x, max_x do
+                if dx % 8 == 0 and dz % 8 == 0 then
+                  local ivm = area:index(minp.x + dx, minp.y + c[3] + c[4], minp.z + dz)
+                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                    data[ivm] = node['default:meselamp']
+                  end
+                end
+              end
+            end
+          else
+            local alt = minp.y + c[3] + math.floor(c[4] / 2)
+            for dz = min_z - 1, max_z + 1, max_z - min_z + 2 do
+              for dx = min_x, max_x do
+                if dx % 10 == 0 then
+                  local ivm = area:index(minp.x + dx, alt, minp.z + dz)
+                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                    data[ivm] = node['default:meselamp']
+                  end
+                end
+              end
+            end
+            for dz = min_z, max_z do
+              for dx = min_x - 1, max_x + 1, max_x - min_x + 2 do
+                if dz % 10 == 0 then
+                  local ivm = area:index(minp.x + dx, alt, minp.z + dz)
+                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                    data[ivm] = node['default:meselamp']
+                  end
                 end
               end
             end

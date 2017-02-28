@@ -98,7 +98,7 @@ local function generate(p_minp, p_maxp, seed)
     vm:write_to_map()
 
     if geomoria_mod.generate_ores then
-      minetest.generate_ores(vm, minp, maxp)
+      --minetest.generate_ores(vm, minp, maxp)
     end
   end
 end

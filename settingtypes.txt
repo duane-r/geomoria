@@ -3,3 +3,6 @@ geomoria_generate_ores (Generate Ores) bool false
 
 # Set to true to add fissures and chasms
 geomoria_add_fissures (Add Fissures) bool true
+
+# Set to true to place meselights (badly)
+geomoria_cheap_lighting (Add Lights) bool false
