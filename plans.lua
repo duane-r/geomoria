@@ -559,41 +559,41 @@ p = {
   {act = 'fill', node = 'air', coords = {16, 8, 21, 3, 1, 8}},
   {act = 'fill', node = 'air', coords = {56, 8, 21, 3, 1, 8}},
 
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {0, 1, 21, 1, 59, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {0, 1, 21, 1, 60, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 59, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 60, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 3, coords = {0, 1, 21, 1, 59, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 3, coords = {0, 1, 21, 1, 60, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {79, 1, 21, 1, 59, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {79, 1, 21, 1, 60, 1}},
 
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {0, 1, 21, 1, 19, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {0, 1, 21, 1, 20, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 19, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 20, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 3, coords = {0, 1, 21, 1, 19, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 3, coords = {0, 1, 21, 1, 20, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {79, 1, 21, 1, 19, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {79, 1, 21, 1, 20, 1}},
 
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 0, coords = {39, 1, 21, 1, 79, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 0, coords = {40, 1, 21, 1, 79, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 2, coords = {39, 1, 21, 1, 0, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 2, coords = {40, 1, 21, 1, 0, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 0, coords = {39, 1, 21, 1, 79, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 0, coords = {40, 1, 21, 1, 79, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 2, coords = {39, 1, 21, 1, 0, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 2, coords = {40, 1, 21, 1, 0, 1}},
 
   {act = 'fill', node = 'air', coords = {37, 1, 21, 2, 71, 2}},
   {act = 'fill', node = 'air', coords = {42, 1, 21, 2, 71, 2}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {37, 1, 21, 1, 71, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {37, 1, 21, 1, 72, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {42, 1, 21, 1, 71, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {42, 1, 21, 1, 72, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {37, 1, 21, 1, 71, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {37, 1, 21, 1, 72, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 3, coords = {42, 1, 21, 1, 71, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 3, coords = {42, 1, 21, 1, 72, 1}},
 
   {act = 'fill', node = 'air', coords = {37, 1, 21, 2, 7, 2}},
   {act = 'fill', node = 'air', coords = {42, 1, 21, 2, 7, 2}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {37, 1, 21, 1, 7, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {37, 1, 21, 1, 8, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {42, 1, 21, 1, 7, 1}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {42, 1, 21, 1, 8, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {37, 1, 21, 1, 7, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {37, 1, 21, 1, 8, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 3, coords = {42, 1, 21, 1, 7, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 3, coords = {42, 1, 21, 1, 8, 1}},
 
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 39, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 40, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {79, 1, 21, 1, 39, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {79, 1, 21, 1, 40, 1}},
 
   {act = 'fill', node = 'air', coords = {9, 1, 21, 2, 39, 2}},
-  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {9, 1, 21, 1, 39, 1}},
-  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {9, 1, 21, 1, 40, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {9, 1, 21, 1, 39, 1}},
+  {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {9, 1, 21, 1, 40, 1}},
 
   {act = 'fill', node = 'geomoria:false_wall', coords = {28, 1, 21, 2, 26, 1}},
   {act = 'fill', node = 'air', coords = {27, 3, 31, 3, 26, 3}},
@@ -617,14 +617,14 @@ for _, o in pairs({0, 43}) do
     for _, y in pairs({57, 17}) do
       local i = {act = 'fill', node = 'air', coords = {x, 1, 21, 2, y + 5, 1}}
       table.insert(p, i)
-      i = {act = 'fill', node = 'doors:door_steel_a', param2 = 0, coords = {x, 1, 21, 1, y + 5, 1}}
+      i = {act = 'fill', node = 'doors:door_wood_a', param2 = 0, coords = {x, 1, 21, 1, y + 5, 1}}
       table.insert(p, i)
       i = {act = 'fill', node = 'air', coords = {x - 1, 3, 21, 3, y + 6, 3}}
       table.insert(p, i)
 
       i = {act = 'fill', node = 'air', coords = {x, 1, 21, 2, y, 1}}
       table.insert(p, i)
-      i = {act = 'fill', node = 'doors:door_steel_a', param2 = 2, coords = {x, 1, 21, 1, y, 1}}
+      i = {act = 'fill', node = 'doors:door_wood_a', param2 = 2, coords = {x, 1, 21, 1, y, 1}}
       table.insert(p, i)
       i = {act = 'fill', node = 'air', coords = {x - 1, 3, 21, 3, y - 3, 3}}
       table.insert(p, i)
