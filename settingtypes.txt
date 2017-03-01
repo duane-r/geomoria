@@ -8,4 +8,4 @@ geomoria_add_fissures (Add Fissures) bool true
 geomoria_cheap_lighting (Add Lights) bool false
 
 # Level of damage
-geomoria_damage_level (Damage Level) number 8
+geomoria_damage_level (Damage Level) int 8
