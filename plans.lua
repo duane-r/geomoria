@@ -591,6 +591,22 @@ p = {
   {act = 'fill', node = 'air', coords = {9, 1, 21, 2, 39, 2}},
   {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {9, 1, 21, 1, 39, 1}},
   {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {9, 1, 21, 1, 40, 1}},
+
+  {act = 'fill', node = 'geomoria:false_wall', coords = {28, 1, 21, 2, 26, 1}},
+  {act = 'fill', node = 'air', coords = {27, 3, 31, 3, 26, 3}},
+  {act = 'fill', node = 'air', coords = {28, 1, 31, 3, 29, 10}},
+  {act = 'fill', node = 'air', coords = {3, 74, 31, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {3, 9, 31, 4, 42, 6}},
+  {act = 'fill', node = 'air', coords = {47, 9, 31, 4, 42, 6}},
+  {act = 'fill', node = 'air', coords = {32, 9, 31, 4, 32, 6}},
+  {act = 'fill', node = 'air', coords = {64, 9, 31, 4, 32, 6}},
+  {act = 'fill', node = 'air', coords = {11, 9, 31, 4, 32, 6}},
+  {act = 'fill', node = 'air', coords = {6, 2, 31, 3, 41, 1}},
+  {act = 'fill', node = 'air', coords = {51, 2, 31, 3, 41, 1}},
+  {act = 'fill', node = 'air', coords = {14, 2, 31, 3, 38, 1}},
+  {act = 'fill', node = 'air', coords = {36, 2, 31, 3, 38, 1}},
+  {act = 'fill', node = 'air', coords = {66, 2, 31, 3, 38, 1}},
+  {act = 'fill', node = 'default:ladder_steel', param2 = 2, coords = {28, 1, 21, 10, 27, 1}},
 }
 
 for _, o in pairs({0, 43}) do
