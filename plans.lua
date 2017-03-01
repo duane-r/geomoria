@@ -515,3 +515,102 @@ for _, item in pairs(geomoria_mod.default_exits) do
 end
 
 geomoria_mod.plans['arena'] = table.copy(p)
+
+
+p = {
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 2, 19, 2}},
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 2, 39, 2}},
+  {act = 'fill', node = 'air', coords = {0, 1, 21, 2, 59, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 2, 19, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 2, 39, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 21, 2, 59, 2}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 2, 0, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 2, 0, 1}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 2, 0, 1}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 2, 79, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 2, 79, 1}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 2, 79, 1}},
+
+  {act = 'fill', node = 'air', coords = {38, 4, 21, 3, 1, 78}},
+  {act = 'fill', node = 'air', coords = {1, 78, 21, 3, 58, 4}},
+  {act = 'fill', node = 'air', coords = {1, 78, 21, 3, 18, 4}},
+  {act = 'fill', node = 'air', coords = {1, 8, 21, 3, 37, 6}},
+  {act = 'fill', node = 'air', coords = {10, 25, 21, 5, 30, 20}},
+  {act = 'fill', node = 'air', coords = {35, 3, 21, 3, 38, 4}},
+  {act = 'fill', node = 'air', coords = {42, 37, 21, 3, 38, 4}},
+  {act = 'fill', node = 'air', coords = {51, 2, 21, 3, 42, 1}},
+  {act = 'fill', node = 'air', coords = {51, 2, 21, 3, 37, 1}},
+  {act = 'fill', node = 'air', coords = {69, 2, 21, 3, 42, 1}},
+  {act = 'fill', node = 'air', coords = {69, 2, 21, 3, 37, 1}},
+  {act = 'fill', node = 'air', coords = {44, 16, 21, 6, 43, 9}},
+  {act = 'fill', node = 'air', coords = {44, 16, 21, 6, 28, 9}},
+  {act = 'fill', node = 'air', coords = {62, 16, 21, 6, 43, 9}},
+  {act = 'fill', node = 'air', coords = {62, 16, 21, 6, 28, 9}},
+
+  {act = 'fill', node = 'air', coords = {24, 13, 21, 3, 71, 2}},
+  {act = 'fill', node = 'air', coords = {43, 13, 21, 3, 71, 2}},
+  {act = 'fill', node = 'air', coords = {24, 13, 21, 3, 7, 2}},
+  {act = 'fill', node = 'air', coords = {43, 13, 21, 3, 7, 2}},
+  {act = 'fill', node = 'air', coords = {16, 8, 21, 3, 71, 8}},
+  {act = 'fill', node = 'air', coords = {56, 8, 21, 3, 71, 8}},
+  {act = 'fill', node = 'air', coords = {16, 8, 21, 3, 1, 8}},
+  {act = 'fill', node = 'air', coords = {56, 8, 21, 3, 1, 8}},
+
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {0, 1, 21, 1, 59, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {0, 1, 21, 1, 60, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 59, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 60, 1}},
+
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {0, 1, 21, 1, 19, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {0, 1, 21, 1, 20, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 19, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 20, 1}},
+
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 0, coords = {39, 1, 21, 1, 79, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 0, coords = {40, 1, 21, 1, 79, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 2, coords = {39, 1, 21, 1, 0, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 2, coords = {40, 1, 21, 1, 0, 1}},
+
+  {act = 'fill', node = 'air', coords = {37, 1, 21, 2, 71, 2}},
+  {act = 'fill', node = 'air', coords = {42, 1, 21, 2, 71, 2}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {37, 1, 21, 1, 71, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {37, 1, 21, 1, 72, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {42, 1, 21, 1, 71, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {42, 1, 21, 1, 72, 1}},
+
+  {act = 'fill', node = 'air', coords = {37, 1, 21, 2, 7, 2}},
+  {act = 'fill', node = 'air', coords = {42, 1, 21, 2, 7, 2}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {37, 1, 21, 1, 7, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {37, 1, 21, 1, 8, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 3, coords = {42, 1, 21, 1, 7, 1}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 3, coords = {42, 1, 21, 1, 8, 1}},
+
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {79, 1, 21, 1, 39, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {79, 1, 21, 1, 40, 1}},
+
+  {act = 'fill', node = 'air', coords = {9, 1, 21, 2, 39, 2}},
+  {act = 'fill', node = 'doors:door_steel_b', param2 = 1, coords = {9, 1, 21, 1, 39, 1}},
+  {act = 'fill', node = 'doors:door_steel_a', param2 = 1, coords = {9, 1, 21, 1, 40, 1}},
+}
+
+for _, o in pairs({0, 43}) do
+  for x = 4 + o, 32 + o, 4 do
+    for _, y in pairs({57, 17}) do
+      local i = {act = 'fill', node = 'air', coords = {x, 1, 21, 2, y + 5, 1}}
+      table.insert(p, i)
+      i = {act = 'fill', node = 'doors:door_steel_a', param2 = 0, coords = {x, 1, 21, 1, y + 5, 1}}
+      table.insert(p, i)
+      i = {act = 'fill', node = 'air', coords = {x - 1, 3, 21, 3, y + 6, 3}}
+      table.insert(p, i)
+
+      i = {act = 'fill', node = 'air', coords = {x, 1, 21, 2, y, 1}}
+      table.insert(p, i)
+      i = {act = 'fill', node = 'doors:door_steel_a', param2 = 2, coords = {x, 1, 21, 1, y, 1}}
+      table.insert(p, i)
+      i = {act = 'fill', node = 'air', coords = {x - 1, 3, 21, 3, y - 3, 3}}
+      table.insert(p, i)
+    end
+  end
+end
+
+geomoria_mod.plans['prison'] = table.copy(p)

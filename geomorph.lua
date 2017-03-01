@@ -53,6 +53,8 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
       elseif p2 and p2 < 4 then
         --p2 = math.floor(p2 / 4) * 4 + (p2 + rot) % 4
         p2 = (p2 + rot) % 4
+      elseif p2 then
+        --
       else
         p2 = nil
       end
