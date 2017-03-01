@@ -314,7 +314,7 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {61, 10, 11, 10, 59, 2}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {39, 2, 11, 10, 1, 10}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {39, 10, 11, 10, 19, 2}},
-  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 11, 14}},
+  {act = 'fill', node = 'air', coords = {39, 2, 11, 3, 11, 14}},
   {act = 'fill', node = 'default:stone', coords = {61, 1, 21, 6, 59, 2}},
 
   {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 8, 0, 80}},
