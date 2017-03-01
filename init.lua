@@ -27,7 +27,7 @@ if geomoria_mod.cheap_lighting == nil then
 end
 
 geomoria_mod.damage_level = minetest.setting_getbool('geomoria_damage_level')
-geomoria_mod.damage_level = (15 - (geomoria_mod.damage_level or 0.7)) / 10
+geomoria_mod.damage_level = (15 - (geomoria_mod.damage_level or 7)) / 10
 
 
 if minetest.registered_items['booty:coffer'] then

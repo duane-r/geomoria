@@ -69,7 +69,15 @@ local function generate(p_minp, p_maxp, seed)
     for z = minp.z, maxp.z do
       for y = minp.y, maxp.y do
         local ivm = area:index(minp.x, y, z)
-        local taper = math.abs(30 - (y - minp.y)) / 50 - 0.7
+        local taper = 0
+        --local taper = math.abs(30 - (y - minp.y)) / 50 - 0.7
+        local dy = y - minp.y
+        if dy < 20 then
+          taper = (20 - dy) / 40
+        elseif dy > 59 then
+          taper = (dy - 59) / 40
+        end
+
         for x = minp.x, maxp.x do
           local damage = fissure_noise[index] - damage_noise[index2 + x - minp.x] - taper
           if damage > geomoria_mod.damage_level then
