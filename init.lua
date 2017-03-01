@@ -27,6 +27,14 @@ if geomoria_mod.cheap_lighting == nil then
 end
 
 
+if minetest.registered_items['booty:coffer'] then
+  geomoria_mod.treasure_chest = 'booty:coffer'
+else
+  geomoria_mod.treasure_chest = 'default:chest_locked'
+end
+print(geomoria_mod.treasure_chest)
+
+
 geomoria_mod.default_exits = {
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 19, 2}},
   {act = 'fill', node = 'air', coords = {0, 1, 21, 3, 39, 2}},

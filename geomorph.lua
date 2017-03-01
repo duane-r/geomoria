@@ -153,6 +153,14 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
           end
         end
 
+        if item.treasure and math.random(item.treasure) == 1 then
+          local x = minp.x + min_x + math.random(max_x - min_x + 1) - 1
+          local y = minp.y + c[3]
+          local z = minp.z + min_z + math.random(max_z - min_z + 1) - 1
+          local ivm = area:index(x, y, z)
+          data[ivm] = node[geomoria_mod.treasure_chest]
+        end
+
         write = true
       elseif item.act == 'stair' then
         for dz = min_z, max_z do
