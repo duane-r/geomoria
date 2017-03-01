@@ -30,7 +30,7 @@ end
 if minetest.registered_items['booty:coffer'] then
   geomoria_mod.treasure_chest = 'booty:coffer'
 else
-  geomoria_mod.treasure_chest = 'default:chest_locked'
+  geomoria_mod.treasure_chest = 'default:chest'
 end
 print(geomoria_mod.treasure_chest)
 
