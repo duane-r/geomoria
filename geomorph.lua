@@ -19,6 +19,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 	local write = false
+  local wetness = 0
 
 	local index = 0
 	local index3d = 0
@@ -43,6 +44,14 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
       local c = item.coords
       local n = item.node
       local p2 = item.param2
+
+      if n == 'default:lava_source' then
+        wetness = wetness - 10 * (c[2] * c[4] * c[6])
+      elseif n == 'default:water_source' then
+        wetness = wetness + 2 * (c[2] * c[4] * c[6])
+      elseif n == 'default:dirt' then
+        wetness = wetness + (c[2] * c[4] * c[6])
+      end
 
       if p2 and item.act == 'ladder' then
         -- 2 X+   3 X-   4 Z+   5 Z-
@@ -193,5 +202,5 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
     end
   end
 
-	return write
+	return write, wetness
 end

@@ -49,29 +49,38 @@ local function generate(p_minp, p_maxp, seed)
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 
-  local fissure_noise
+  local fissure_noise, damage_noise
   if geomoria_mod.add_fissures then
+    damage_noise = minetest.get_perlin_map({offset = 0, scale = 0.5, seed = -6827, spread = {x = 200, y = 200, z = 200}, octaves = 3, persist = 0.8, lacunarity = 2}, csize):get2dMap_flat({x=minp.x, y=minp.z})
     fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.5, lacunarity = 2}, csize):get3dMap_flat(minp)
   end
 
-  local write = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)
+  local write, wetness = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)
+  if wetness == 0 then
+    wetness = 20
+  else
+    wetness = math.floor(20 - (math.abs(wetness) ^ 0.5 * (math.abs(wetness) / wetness)))
+  end
+  wetness = wetness <= 2 and 2 or wetness
 
   if not DEBUG and fissure_noise then
     local index = 1
+    local index2 = 1
     for z = minp.z, maxp.z do
       for y = minp.y, maxp.y do
-        local noise_cut = (math.abs(20 - (y - minp.y)) / 30) + 0.5
         local ivm = area:index(minp.x, y, z)
+        local taper = math.abs(30 - (y - minp.y)) / 50 - 0.7
         for x = minp.x, maxp.x do
-          if fissure_noise[index] > noise_cut then
+          local damage = fissure_noise[index] - damage_noise[index2 + x - minp.x] - taper
+          if damage > geomoria_mod.damage_level then
             if data[ivm] ~= node['default:water_source'] and data[ivm] ~= node['default:water_source'] then
               data[ivm] = node['air']
             end
-          elseif (data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block']) and math.random(4) == 1 then
-            if math.random(2) == 1 then
-              data[ivm] = node['default:cobble']
-            else
+          elseif (data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block']) and damage > geomoria_mod.damage_level - 0.5 then
+            if wetness and math.random(wetness) == 1 then
               data[ivm] = node['default:mossycobble']
+            else
+              data[ivm] = node['default:cobble']
             end
           end
 
@@ -79,6 +88,7 @@ local function generate(p_minp, p_maxp, seed)
           index = index + 1
         end
       end
+      index2 = index2 + csize.x
     end
   end
 
