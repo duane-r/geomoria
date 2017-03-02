@@ -51,6 +51,10 @@ geomoria_mod.default_exits = {
   {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 79, 1}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 79, 1}},
   {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 79, 1}},
+  {act = 'fill', node = 'air', coords = {0, 1, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {79, 1, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 0, 1}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 79, 1}},
 }
 
 

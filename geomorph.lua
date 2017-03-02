@@ -184,11 +184,15 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               dy = c[3] + max_x - dx
             end
 
-            for y = c[3], dy - 1 do
+            local y1 = item.depth and dy - item.depth or c[3]
+            y1 = math.max(y1, c[3])
+            for y = y1, dy - 1 do
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['default:stone']
             end
-            for y = dy + 1, c[3] + c[4] + 2 do
+            y1 = item.height and dy + item.height or c[3] + c[4] + 2
+            y1 = math.min(y1, c[3] + c[4] + 2)
+            for y = dy + 1, y1 do
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['air']
             end

@@ -10,6 +10,10 @@
 
 local p = {
   {act = 'fill', node = 'air', line = 'default:stone_block', treasure = 1, coords = {1, 78, 21, 38, 1, 78}},
+  {act = 'fill', node = 'default:stone_block', coords = {1, 78, 50, 1, 1, 78}},
+  {act = 'fill', node = 'air', coords = {5, 70, 50, 1, 5, 70}},
+  {act = 'stair', node = 'stairs:stair_stone', depth = 3, height = 4, param2 = 2, coords = {1, 2, 21, 30, 25, 30}},
+  {act = 'stair', node = 'stairs:stair_stone', depth = 3, height = 4, param2 = 0, coords = {77, 2, 21, 30, 25, 30}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
@@ -74,6 +78,32 @@ p = {
   {act = 'fill', node = 'air', coords = {21, 28, 21, 3, 73, 2}},
   {act = 'fill', node = 'air', coords = {16, 2, 21, 3, 56, 6}},
   {act = 'ladder', node = 'default:ladder_steel', param2 = 5, coords = {78, 1, 11, 10, 62, 1}},
+  {act = 'ladder', node = 'default:ladder_steel', param2 = 4, coords = {20, 1, 21, 20, 60, 1}},
+
+  {act = 'fill', node = 'air', coords = {20, 51, 41, 5, 61, 9}},
+  {act = 'fill', node = 'air', coords = {11, 9, 41, 5, 11, 59}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 2, coords = {16, 2, 21, 20, 36, 20}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {1, 10, 41, 10, 39, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {39, 2, 41, 10, 69, 10}},
+
+  {act = 'fill', node = 'air', coords = {71, 8, 51, 3, 39, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', depth = 2, param2 = 2, coords = {69, 2, 41, 10, 51, 10}},
+  {act = 'fill', node = 'air', coords = {69, 2, 51, 3, 13, 38}},
+  {act = 'fill', node = 'air', coords = {61, 8, 51, 3, 13, 2}},
+  {act = 'fill', node = 'air', coords = {61, 2, 31, 20, 13, 2}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {61, 2, 50, 1, 13, 2}},
+  {act = 'fill', node = 'air', coords = {60, 8, 51, 4, 41, 10}},
+  {act = 'fill', node = 'air', coords = {60, 8, 51, 4, 29, 10}},
+  {act = 'fill', node = 'air', coords = {28, 24, 51, 6, 30, 25}},
+  {act = 'fill', node = 'air', coords = {52, 8, 51, 3, 41, 3}},
+  {act = 'fill', node = 'air', coords = {44, 8, 51, 3, 27, 3}},
+  {act = 'fill', node = 'air', coords = {28, 8, 51, 3, 27, 3}},
+  {act = 'fill', node = 'air', coords = {44, 8, 51, 3, 55, 3}},
+  {act = 'fill', node = 'air', coords = {28, 8, 51, 3, 55, 3}},
+  {act = 'fill', node = 'default:stone', coords = {37, 5, 51, 6, 40, 5}},
+  {act = 'fill', node = 'air', coords = {68, 1, 51, 3, 34, 2}},
+  {act = 'fill', node = 'air', coords = {68, 1, 51, 3, 44, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 1, 29}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
@@ -117,19 +147,56 @@ p = {
   {act = 'fill', node = 'air', coords = {60, 1, 21, 3, 30, 2}},
   {act = 'fill', node = 'air', coords = {73, 2, 21, 3, 34, 12}},
   {act = 'fill', node = 'air', coords = {3, 16, 21, 3, 59, 2}},
-  {act = 'fill', node = 'air', coords = {11, 25, 31, 4, 14, 10}},
+  {act = 'fill', node = 'air', coords = {11, 25, 31, 4, 13, 11}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {33, 10, 21, 10, 14, 1}},
-  {act = 'fill', node = 'air', coords = {61, 13, 31, 4, 56, 19}},
+  {act = 'fill', node = 'air', coords = {61, 14, 31, 4, 56, 19}},
   {act = 'ladder', node = 'default:ladder_steel', param2 = 4, coords = {63, 1, 21, 10, 74, 1}},
-  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {73, 1, 21, 10, 49, 10}},
-  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {6, 10, 21, 10, 58, 1}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {73, 2, 21, 10, 49, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {6, 10, 21, 10, 57, 2}},
   {act = 'fill', node = 'air', coords = {16, 2, 31, 4, 24, 35}},
   {act = 'fill', node = 'air', treasure = 1, coords = {61, 2, 31, 4, 22, 34}},
   {act = 'fill', node = 'air', treasure = 3, coords = {36, 25, 31, 4, 22, 2}},
-  {act = 'fill', node = 'air', coords = {3, 3, 21, 3, 58, 1}},
+  {act = 'fill', node = 'air', coords = {3, 3, 21, 3, 57, 2}},
   {act = 'fill', node = 'geomoria:false_wall', coords = {61, 2, 31, 4, 55, 1}},
   {act = 'fill', node = 'geomoria:false_wall', coords = {36, 1, 31, 4, 22, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {67, 2, 31, 10, 46, 10}},
+
+  {act = 'fill', node = 'air', coords = {55, 10, 41, 4, 37, 10}},
+  {act = 'fill', node = 'air', coords = {13, 53, 41, 6, 16, 15}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {12, 9, 41, 4, 31, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {23, 9, 41, 4, 31, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {34, 9, 41, 4, 31, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {45, 9, 41, 4, 31, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {56, 9, 41, 4, 31, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {12, 9, 41, 4, 11, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {23, 9, 41, 4, 11, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {34, 9, 41, 4, 11, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {45, 9, 41, 4, 11, 5}},
+  {act = 'fill', node = 'air', treasure = 8, coords = {56, 9, 41, 4, 11, 5}},
+  {act = 'fill', node = 'air', coords = {67, 2, 41, 3, 25, 21}},
+  {act = 'fill', node = 'air', coords = {65, 4, 41, 3, 22, 3}},
+  {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {67, 10, 41, 10, 11, 2}},
+  {act = 'fill', node = 'air', coords = {65, 2, 41, 3, 41, 2}},
+  {act = 'fill', node = 'air', coords = {65, 2, 41, 3, 11, 2}},
+
+  {act = 'fill', node = 'air', coords = {77, 2, 51, 3, 3, 38}},
+  {act = 'fill', node = 'air', coords = {1, 76, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {1, 78, 51, 3, 1, 2}},
+  {act = 'fill', node = 'air', coords = {1, 2, 51, 3, 3, 36}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 75, 4}},
 }
+
+for x = 9, 69, 15 do
+  table.insert(p, {act = 'fill', node = 'air', coords = {x, 2, 51, 3, 41, 34}})
+  for z = 44, 74, 6 do
+    table.insert(p, {act = 'fill', node = 'air', treasure = 20, coords = {x - 6, 5, 51, 3, z - 2, 5}})
+    table.insert(p, {act = 'fill', node = 'air', treasure = 20, coords = {x + 3, 5, 51, 3, z - 2, 5}})
+    table.insert(p, {act = 'fill', node = 'air', coords = {x - 1, 1, 51, 2, z, 1}})
+    table.insert(p, {act = 'fill', node = 'doors:door_wood_b', param2 = 3, coords = {x - 1, 1, 51, 1, z, 1}})
+    table.insert(p, {act = 'fill', node = 'air', coords = {x + 2, 1, 51, 2, z, 1}})
+    table.insert(p, {act = 'fill', node = 'doors:door_wood_a', param2 = 1, coords = {x + 2, 1, 51, 1, z, 1}})
+  end
+end
 
 for _, item in pairs(geomoria_mod.default_exits) do
   table.insert(p, 2, table.copy(item))
