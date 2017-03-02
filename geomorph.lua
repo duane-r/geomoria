@@ -40,7 +40,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   local rot = math.random(4) - 1
 
   for _, item in pairs(plan) do
-    if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' then
+    if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
       local c = item.coords
       local n = item.node
       local p2 = item.param2
@@ -73,7 +73,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         return
       end
 
-      local min_x, max_x, min_y, max_y, min_z, max_z, dy
+      local min_x, max_x, min_z, max_z, dy
 
       if rot == 0 then
         min_x, max_x = c[1], c[1] + c[2] - 1
@@ -201,6 +201,78 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
             p2data[ivm] = p2
           end
         end
+        write = true
+      elseif item.act == 'cylinder' then
+        local ax = item.axis
+        if ax ~= 'y' and (rot == 1 or rot == 3) then
+          if ax == 'z' then
+            ax = 'x'
+          else
+            ax = 'z'
+          end
+        end
+
+        local r2 = (c[4] / 2) ^ 2
+        if ax == 'y' then
+          r2 = (c[2] / 2) ^ 2
+        end
+
+        local rx = (min_x + max_x) / 2
+        local ry = (c[3] + c[3] + c[4] - 1) / 2
+        local rz = (min_z + max_z) / 2
+
+        min_x = math.max(min_x, 0)
+        local min_y = math.max(c[3], 0)
+        min_z = math.max(min_z, 0)
+        max_x = math.min(max_x, csize.x - 1)
+        local max_y = math.min(c[3] + c[4] - 1, csize.y - 1)
+        max_z = math.min(max_z, csize.z - 1)
+
+        for dz = min_z, max_z do
+          for dy = min_y, max_y do
+            for dx = min_x, max_x do
+              if (ax == 'x' and (rz - dz) ^ 2 + (ry - dy) ^ 2 <= r2) or
+                (ax == 'y' and (rx - dx) ^ 2 + (rz - dz) ^ 2 <= r2) or
+                (ax == 'z' and (rx - dx) ^ 2 + (ry - dy) ^ 2 <= r2) then
+                if not item.random or math.random(item.random) == 1 then
+                  local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                  data[ivm] = node[n]
+                  p2data[ivm] = p2
+                end
+              end
+            end
+          end
+        end
+
+        write = true
+      elseif item.act == 'sphere' then
+        local r2 = (c[2] / 2) ^ 2
+
+        local rx = (min_x + max_x) / 2
+        local ry = (c[3] + c[3] + c[4] - 1) / 2
+        local rz = (min_z + max_z) / 2
+
+        min_x = math.max(min_x, 0)
+        local min_y = math.max(c[3], 0)
+        min_z = math.max(min_z, 0)
+        max_x = math.min(max_x, csize.x - 1)
+        local max_y = math.min(c[3] + c[4] - 1, csize.y - 1)
+        max_z = math.min(max_z, csize.z - 1)
+
+        for dz = min_z, max_z do
+          for dy = min_y, max_y do
+            for dx = min_x, max_x do
+              if (rz - dz) ^ 2 + (ry - dy) ^ 2 + (rx - dx) ^ 2 <= r2 then
+                if not item.random or math.random(item.random) == 1 then
+                  local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                  data[ivm] = node[n]
+                  p2data[ivm] = p2
+                end
+              end
+            end
+          end
+        end
+
         write = true
       end
     end

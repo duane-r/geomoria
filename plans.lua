@@ -128,7 +128,11 @@ p = {
   {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 21, 59}},
   {act = 'fill', node = 'air', coords = {39, 22, 21, 3, 77, 2}},
   {act = 'fill', node = 'air', coords = {44, 2, 21, 3, 75, 2}},
+  {act = 'cylinder', node = 'air', axis = 'z', coords = {30, 10, 25, 10, 25, 50}},
+  {act = 'cylinder', node = 'air', axis = 'z', coords = {40, 10, 25, 10, 25, 50}},
+  {act = 'cylinder', node = 'air', axis = 'z', coords = {50, 10, 25, 10, 25, 50}},
   {act = 'fill', node = 'air', coords = {30, 30, 21, 8, 25, 50}},
+
   {act = 'fill', node = 'air', treasure = 8, coords = {24, 5, 21, 3, 64, 12}},
   {act = 'fill', node = 'air', treasure = 8, coords = {24, 5, 21, 3, 51, 12}},
   {act = 'fill', node = 'air', treasure = 8, coords = {24, 5, 21, 3, 38, 12}},
@@ -384,7 +388,9 @@ p = {
   {act = 'fill', node = 'air', coords = {39, 2, 11, 3, 11, 14}},
   {act = 'fill', node = 'default:stone', coords = {61, 1, 21, 6, 59, 2}},
 
-  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 8, 0, 80}},
+  {act = 'cylinder', node = 'air', axis = 'z', coords = {10, 20, 15, 20, 0, 80}},
+  {act = 'fill', node = 'default:stone', coords = {10, 20, 15, 6, 0, 80}},
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 4, 0, 80}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 56, 8}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 36, 8}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 16, 8}},
@@ -700,3 +706,10 @@ for _, o in pairs({0, 43}) do
 end
 
 geomoria_mod.plans['prison'] = table.copy(p)
+
+
+p = {
+  {act = 'sphere', node = 'air', coords = {1, 78, -18, 78, 1, 78}},
+  {act = 'fill', node = 'default:stone', coords = {1, 78, 0, 21, 1, 78}},
+  {act = 'fill', node = 'default:stone_block', coords = {1, 78, 20, 1, 1, 78}},
+}
