@@ -41,15 +41,15 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 
   for _, item in pairs(plan) do
     if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
-      local c = item.coords
+      local coords = item.coords
       local p2 = item.param2
 
       if item.node == 'default:lava_source' then
-        wetness = wetness - 10 * (c[2] * c[4] * c[6])
+        wetness = wetness - 10 * (coords[2] * coords[4] * coords[6])
       elseif item.node == 'default:water_source' then
-        wetness = wetness + 2 * (c[2] * c[4] * c[6])
+        wetness = wetness + 2 * (coords[2] * coords[4] * coords[6])
       elseif item.node == 'default:dirt' then
-        wetness = wetness + (c[2] * c[4] * c[6])
+        wetness = wetness + (coords[2] * coords[4] * coords[6])
       end
 
       if p2 and item.act == 'ladder' then
@@ -67,7 +67,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         p2 = nil
       end
 
-      if not (c and item.node and type(c) == 'table' and type(item.node) == 'string' and #c == 6) then
+      if not (coords and item.node and type(coords) == 'table' and type(item.node) == 'string' and #coords == 6) then
         print('Geomoria: Invalid plan')
         return
       end
@@ -75,23 +75,23 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
       local min_x, max_x, min_z, max_z, dy
 
       if rot == 0 then
-        min_x, max_x = c[1], c[1] + c[2] - 1
-        min_z, max_z = c[5], c[5] + c[6] - 1
+        min_x, max_x = coords[1], coords[1] + coords[2] - 1
+        min_z, max_z = coords[5], coords[5] + coords[6] - 1
       elseif rot == 1 then
-        min_x, max_x = c[5], c[5] + c[6] - 1
-        min_z, max_z = csize.x - (c[1] + c[2]), csize.x - c[1] - 1
+        min_x, max_x = coords[5], coords[5] + coords[6] - 1
+        min_z, max_z = csize.x - (coords[1] + coords[2]), csize.x - coords[1] - 1
       elseif rot == 2 then
-        min_x, max_x = csize.x - (c[1] + c[2]), csize.x - c[1] - 1
-        min_z, max_z = csize.z - (c[5] + c[6]), csize.z - c[5] - 1
+        min_x, max_x = csize.x - (coords[1] + coords[2]), csize.x - coords[1] - 1
+        min_z, max_z = csize.z - (coords[5] + coords[6]), csize.z - coords[5] - 1
       elseif rot == 3 then
-        min_x, max_x = csize.z - (c[5] + c[6]), csize.z - c[5] - 1
-        min_z, max_z = c[1], c[1] + c[2] - 1
+        min_x, max_x = csize.z - (coords[5] + coords[6]), csize.z - coords[5] - 1
+        min_z, max_z = coords[1], coords[1] + coords[2] - 1
       end
 
       if item.act == 'fill' or item.act == 'ladder' then
         if item.line then
           for dz = min_z - 1, max_z + 1 do
-            for dy = c[3] - 1, c[3] + c[4] do
+            for dy = coords[3] - 1, coords[3] + coords[4] do
               for dx = min_x - 1, max_x + 1 do
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
                 if data[ivm] == node['default:stone'] then
@@ -104,7 +104,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         if item.floor then
           for dz = min_z - 1, max_z + 1 do
             for dx = min_x - 1, max_x + 1 do
-              local ivm = area:index(minp.x + dx, minp.y + c[3] - 1, minp.z + dz)
+              local ivm = area:index(minp.x + dx, minp.y + coords[3] - 1, minp.z + dz)
               if data[ivm] == node['default:stone'] then
                 data[ivm] = node[item.floor]
               end
@@ -113,11 +113,11 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         end
 
         if geomoria_mod.cheap_lighting and item.node == 'air' then
-          if c[4] < 13 and c[2] > 10 and c[6] > 10 then
+          if coords[4] < 13 and coords[2] > 10 and coords[6] > 10 then
             for dz = min_z, max_z do
               for dx = min_x, max_x do
                 if dx % 8 == 0 and dz % 8 == 0 then
-                  local ivm = area:index(minp.x + dx, minp.y + c[3] + c[4], minp.z + dz)
+                  local ivm = area:index(minp.x + dx, minp.y + coords[3] + coords[4], minp.z + dz)
                   if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
@@ -125,7 +125,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               end
             end
           else
-            local alt = minp.y + c[3] + math.floor(c[4] / 2)
+            local alt = minp.y + coords[3] + math.floor(coords[4] / 2)
             for dz = min_z - 1, max_z + 1, max_z - min_z + 2 do
               for dx = min_x, max_x do
                 if dx % 10 == 0 then
@@ -150,7 +150,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         end
 
         for dz = min_z, max_z do
-          for dy = c[3], c[3] + c[4] - 1 do
+          for dy = coords[3], coords[3] + coords[4] - 1 do
             for dx = min_x, max_x do
               if not item.random or math.random(item.random) == 1 then
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
@@ -163,7 +163,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 
         if item.treasure and math.random(item.treasure) == 1 then
           local x = minp.x + min_x + math.random(max_x - min_x + 1) - 1
-          local y = minp.y + c[3]
+          local y = minp.y + coords[3]
           local z = minp.z + min_z + math.random(max_z - min_z + 1) - 1
           local ivm = area:index(x, y, z)
           data[ivm] = node[geomoria_mod.treasure_chest]
@@ -174,23 +174,23 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         for dz = min_z, max_z do
           for dx = min_x, max_x do
             if p2 == 0 then
-              dy = c[3] + dz - min_z
+              dy = coords[3] + dz - min_z
             elseif p2 == 1 then
-              dy = c[3] + dx - min_x
+              dy = coords[3] + dx - min_x
             elseif p2 == 2 then
-              dy = c[3] + max_z - dz
+              dy = coords[3] + max_z - dz
             elseif p2 == 3 then
-              dy = c[3] + max_x - dx
+              dy = coords[3] + max_x - dx
             end
 
-            local y1 = item.depth and dy - item.depth or c[3]
-            y1 = math.max(y1, c[3])
+            local y1 = item.depth and dy - item.depth or coords[3]
+            y1 = math.max(y1, coords[3])
             for y = y1, dy - 1 do
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['default:stone']
             end
-            y1 = item.height and dy + item.height or c[3] + c[4] + 2
-            y1 = math.min(y1, c[3] + c[4] + 2)
+            y1 = item.height and dy + item.height or coords[3] + coords[4] + 2
+            y1 = math.min(y1, coords[3] + coords[4] + 2)
             for y = dy + 1, y1 do
               local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
               data[ivm] = node['air']
@@ -211,20 +211,20 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
           end
         end
 
-        local r2 = (c[4] / 2) ^ 2
+        local r2 = (coords[4] / 2) ^ 2
         if ax == 'y' then
-          r2 = (c[2] / 2) ^ 2
+          r2 = (coords[2] / 2) ^ 2
         end
 
         local rx = (min_x + max_x) / 2
-        local ry = (c[3] + c[3] + c[4] - 1) / 2
+        local ry = (coords[3] + coords[3] + coords[4] - 1) / 2
         local rz = (min_z + max_z) / 2
 
         min_x = math.max(min_x, 0)
-        local min_y = math.max(c[3], 0)
+        local min_y = math.max(coords[3], 0)
         min_z = math.max(min_z, 0)
         max_x = math.min(max_x, csize.x - 1)
-        local max_y = math.min(c[3] + c[4] - 1, csize.y - 1)
+        local max_y = math.min(coords[3] + coords[4] - 1, csize.y - 1)
         max_z = math.min(max_z, csize.z - 1)
 
         for dz = min_z, max_z do
@@ -245,17 +245,17 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 
         write = true
       elseif item.act == 'sphere' then
-        local r2 = (c[2] / 2) ^ 2
+        local r2 = (coords[2] / 2) ^ 2
 
         local rx = (min_x + max_x) / 2
-        local ry = (c[3] + c[3] + c[4] - 1) / 2
+        local ry = (coords[3] + coords[3] + coords[4] - 1) / 2
         local rz = (min_z + max_z) / 2
 
         min_x = math.max(min_x, 0)
-        local min_y = math.max(c[3], 0)
+        local min_y = math.max(coords[3], 0)
         min_z = math.max(min_z, 0)
         max_x = math.min(max_x, csize.x - 1)
-        local max_y = math.min(c[3] + c[4] - 1, csize.y - 1)
+        local max_y = math.min(coords[3] + coords[4] - 1, csize.y - 1)
         max_z = math.min(max_z, csize.z - 1)
 
         for dz = min_z, max_z do
