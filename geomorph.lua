@@ -42,14 +42,13 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   for _, item in pairs(plan) do
     if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
       local c = item.coords
-      local n = item.node
       local p2 = item.param2
 
-      if n == 'default:lava_source' then
+      if item.node == 'default:lava_source' then
         wetness = wetness - 10 * (c[2] * c[4] * c[6])
-      elseif n == 'default:water_source' then
+      elseif item.node == 'default:water_source' then
         wetness = wetness + 2 * (c[2] * c[4] * c[6])
-      elseif n == 'default:dirt' then
+      elseif item.node == 'default:dirt' then
         wetness = wetness + (c[2] * c[4] * c[6])
       end
 
@@ -68,7 +67,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         p2 = nil
       end
 
-      if not (c and n and type(c) == 'table' and type(n) == 'string' and #c == 6) then
+      if not (c and item.node and type(c) == 'table' and type(item.node) == 'string' and #c == 6) then
         print('Geomoria: Invalid plan')
         return
       end
@@ -155,7 +154,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
             for dx = min_x, max_x do
               if not item.random or math.random(item.random) == 1 then
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                data[ivm] = node[n]
+                data[ivm] = node[item.node]
                 p2data[ivm] = p2
               end
             end
@@ -197,7 +196,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               data[ivm] = node['air']
             end
             local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-            data[ivm] = node[n]
+            data[ivm] = node[item.node]
             p2data[ivm] = p2
           end
         end
@@ -236,7 +235,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
                 (ax == 'z' and (rx - dx) ^ 2 + (ry - dy) ^ 2 <= r2) then
                 if not item.random or math.random(item.random) == 1 then
                   local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                  data[ivm] = node[n]
+                  data[ivm] = node[item.node]
                   p2data[ivm] = p2
                 end
               end
@@ -265,7 +264,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               if (rz - dz) ^ 2 + (ry - dy) ^ 2 + (rx - dx) ^ 2 <= r2 then
                 if not item.random or math.random(item.random) == 1 then
                   local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                  data[ivm] = node[n]
+                  data[ivm] = node[item.node]
                   p2data[ivm] = p2
                 end
               end
