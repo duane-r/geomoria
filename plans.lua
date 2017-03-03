@@ -713,3 +713,23 @@ p = {
   {act = 'fill', node = 'default:stone', coords = {1, 78, 0, 21, 1, 78}},
   {act = 'fill', node = 'default:stone_block', coords = {1, 78, 20, 1, 1, 78}},
 }
+
+
+geomoria_mod.stair_height = {
+  {act = 'fill', node = 'default:stone', coords = {26, 5, 0, 5, 23, 31}},
+  {act = 'fill', node = 'default:stone', coords = {26, 28, 0, 26, 49, 5}},
+  {act = 'fill', node = 'default:stone', coords = {49, 5, 19, 27, 29, 28}},
+  {act = 'fill', node = 'default:stone', coords = {29, 25, 39, 27, 26, 5}},
+  {act = 'fill', node = 'default:stone', coords = {26, 5, 59, 21, 26, 28}},
+  {act = 'fill', node = 'air', coords = {27, 3, 0, 4, 47, 6}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 1, coords = {30, 20, 0, 20, 50, 3}},
+  {act = 'fill', node = 'air', coords = {47, 6, 20, 4, 50, 3}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 2, coords = {50, 3, 20, 20, 30, 20}},
+  {act = 'fill', node = 'air', coords = {50, 3, 40, 4, 27, 6}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 3, coords = {30, 20, 40, 20, 27, 3}},
+  {act = 'fill', node = 'air', coords = {27, 6, 60, 4, 27, 3}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 0, coords = {27, 3, 60, 21, 30, 20}},
+}
+
+geomoria_mod.stair_base = table.copy(geomoria_mod.stair_height)
+--table.insert(geomoria_mod.stair_base, {})

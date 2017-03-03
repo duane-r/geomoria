@@ -8,6 +8,17 @@ local max_depth = 31000
 local geomoria_depth = geomoria_mod.geomoria_depth
 
 
+local ground_nodes = {}
+ground_nodes[minetest.get_content_id('default:stone')] = true
+ground_nodes[minetest.get_content_id('default:desert_stone')] = true
+ground_nodes[minetest.get_content_id('default:sandstone')] = true
+ground_nodes[minetest.get_content_id('default:dirt')] = true
+ground_nodes[minetest.get_content_id('default:sand')] = true
+ground_nodes[minetest.get_content_id('default:dirt_with_grass')] = true
+ground_nodes[minetest.get_content_id('default:dirt_with_snow')] = true
+ground_nodes[minetest.get_content_id('default:dirt_with_dry_grass')] = true
+
+
 -- This table looks up nodes that aren't already stored.
 local node = setmetatable({}, {
 	__index = function(t, k)
@@ -32,7 +43,10 @@ local function generate(p_minp, p_maxp, seed)
 
 	local minp, maxp = p_minp, p_maxp
   local avg = (minp.y + maxp.y) / 2
-  if avg < (geomoria_depth - 1) * 80 - 32 or avg > geomoria_depth * 80 - 32 then
+	local csize = vector.add(vector.subtract(maxp, minp), 1)
+
+  local exit_stair = math.abs((csize.z * 10) - minp.z) < csize.z and math.abs((csize.x * 10) - minp.x) < csize.x
+  if avg < (geomoria_depth - 1) * 80 - 32 or (not exit_stair and avg > geomoria_depth * 80 - 32) then
     return
   end
 
@@ -45,7 +59,40 @@ local function generate(p_minp, p_maxp, seed)
   p2data = vm:get_param2_data()
 	local heightmap
 	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
-	local csize = vector.add(vector.subtract(maxp, minp), 1)
+
+  if exit_stair and minp.y < 200 and avg > geomoria_depth * 80 - 32 then
+		heightmap = minetest.get_mapgen_object("heightmap")
+
+    -- Correct heightmap.
+    if maxp.y < -300 or minp.y > 300 then
+      for i = 1, #heightmap do
+        heightmap[i] = (maxp.y < 0) and max_depth or - max_depth
+      end
+    else
+      local index = 0
+      for z = minp.z, maxp.z do
+        for x = minp.x, maxp.x do
+          index = index + 1
+
+          local height = heightmap[index]
+          if height and height < maxp.y - 1 and height > minp.y then
+            --nop
+          else
+            height = - max_depth
+            local ivm2 = area:index(x, maxp.y + 8, z)
+            for y = maxp.y + 8, minp.y - 8, -1 do
+              if ground_nodes[data[ivm2]] then
+                height = (y < maxp.y + 8) and y or max_depth
+                break
+              end
+              ivm2 = ivm2 - area.ystride
+            end
+            heightmap[index] = height
+          end
+        end
+      end
+    end
+  end
 
   local fissure_noise, damage_noise
   if geomoria_mod.add_fissures then
@@ -53,7 +100,7 @@ local function generate(p_minp, p_maxp, seed)
     fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.5, lacunarity = 2}, csize):get3dMap_flat(minp)
   end
 
-  local write, wetness = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node)
+  local write, wetness = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node, heightmap)
   if wetness == 0 then
     wetness = 20
   else

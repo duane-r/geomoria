@@ -12,7 +12,7 @@ minetest.register_node("geomoria:bright_air", newnode)
 
 
 
-geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
+geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
 	if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
 		return
 	end
@@ -21,16 +21,25 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
 	local write = false
   local wetness = 0
 
+  local avg = (minp.y + maxp.y) / 2
+  local out_of_range
+  if avg > geomoria_mod.geomoria_depth * 80 - 32 then
+    out_of_range = true
+  end
+
 	local index = 0
 	local index3d = 0
-	for z = minp.z, maxp.z do
-    for y = minp.y, maxp.y do
-      local ivm = area:index(minp.x, y, z)
-      for x = minp.x, maxp.x do
-        if not geomoria_mod.generate_ores or data[ivm] == node['air'] or data[ivm] == node['default:lava_source'] or data[ivm] == node['default:water_source'] then
-          data[ivm] = node['default:stone']
+
+  if not out_of_range then
+    for z = minp.z, maxp.z do
+      for y = minp.y, maxp.y do
+        local ivm = area:index(minp.x, y, z)
+        for x = minp.x, maxp.x do
+          if not geomoria_mod.generate_ores or data[ivm] == node['air'] or data[ivm] == node['default:lava_source'] or data[ivm] == node['default:water_source'] then
+            data[ivm] = node['default:stone']
+          end
+          ivm = ivm + 1
         end
-        ivm = ivm + 1
       end
     end
   end
@@ -38,6 +47,15 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
   local plan_name = geomoria_mod.plans_keys[math.random(#geomoria_mod.plans_keys)]
   local plan = geomoria_mod.plans[plan_name]
   local rot = math.random(4) - 1
+
+  local exit_stair = math.abs((csize.z * 10) - minp.z) < csize.z and math.abs((csize.x * 10) - minp.x) < csize.x
+  if out_of_range then
+    plan = geomoria_mod.stair_height
+    rot = 0
+  elseif exit_stair then
+    plan = geomoria_mod.stair_base
+    rot = 0
+  end
 
   for _, item in pairs(plan) do
     if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
@@ -150,12 +168,21 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
         end
 
         for dz = min_z, max_z do
-          for dy = coords[3], coords[3] + coords[4] - 1 do
-            for dx = min_x, max_x do
-              if not item.random or math.random(item.random) == 1 then
-                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                data[ivm] = node[item.node]
-                p2data[ivm] = p2
+          for dx = min_x, max_x do
+            local height
+            if heightmap then
+              height = heightmap[dz * csize.x + dx + 1]
+              if item.node == 'air' then
+                height = height + 4
+              end
+            end
+            for dy = coords[3], coords[3] + coords[4] - 1 do
+              if not height or (minp.y + dy) < height then
+                if not item.random or math.random(item.random) == 1 then
+                  local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                  data[ivm] = node[item.node]
+                  p2data[ivm] = p2
+                end
               end
             end
           end
@@ -183,21 +210,34 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node)
               dy = coords[3] + max_x - dx
             end
 
+            local height
+            if heightmap then
+              height = heightmap[dz * csize.x + dx + 1]
+            end
+
             local y1 = item.depth and dy - item.depth or coords[3]
             y1 = math.max(y1, coords[3])
             for y = y1, dy - 1 do
-              local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
-              data[ivm] = node['default:stone']
+              if not height or (minp.y + y) <= height then
+                local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
+                data[ivm] = node['default:stone']
+              end
             end
+
             y1 = item.height and dy + item.height or coords[3] + coords[4] + 2
             y1 = math.min(y1, coords[3] + coords[4] + 2)
             for y = dy + 1, y1 do
-              local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
-              data[ivm] = node['air']
+              if not height or (minp.y + y) <= (height + 4) then
+                local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
+                data[ivm] = node['air']
+              end
             end
-            local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-            data[ivm] = node[item.node]
-            p2data[ivm] = p2
+
+            if not height or (minp.y + dy) <= height then
+              local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+              data[ivm] = node[item.node]
+              p2data[ivm] = p2
+            end
           end
         end
         write = true

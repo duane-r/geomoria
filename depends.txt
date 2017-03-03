@@ -2,4 +2,5 @@ default
 doors
 stairs
 booty?
+fun_caves?
 mobs_goblins?
