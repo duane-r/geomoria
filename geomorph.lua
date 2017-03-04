@@ -48,7 +48,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
   local plan = geomoria_mod.plans[plan_name]
   local rot = math.random(4) - 1
 
-  local exit_stair = math.abs((csize.z * 10) - minp.z) < csize.z and math.abs((csize.x * 10) - minp.x) < csize.x
+  local exit_stair = (minp.z % (csize.z * 10)) < csize.z and (minp.x % (csize.x * 10)) < csize.x
   if out_of_range then
     plan = geomoria_mod.stair_height
     rot = 0

@@ -733,3 +733,146 @@ geomoria_mod.stair_height = {
 
 geomoria_mod.stair_base = table.copy(geomoria_mod.stair_height)
 --table.insert(geomoria_mod.stair_base, {})
+p = {
+  {act = 'sphere', node = 'air', coords = {35, 40, 31, 40, 35, 40}},
+  {act = 'fill', node = 'default:stone', coords = {35, 40, 31, 20, 35, 40}},
+  {act = 'fill', node = 'default:stone_block', coords = {35, 40, 50, 1, 35, 40}},
+
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 3, coords = {50, 10, 41, 10, 10, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 0, coords = {10, 2, 41, 10, 25, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 3, coords = {20, 10, 41, 10, 55, 2}},
+  {act = 'fill', node = 'air', coords = {55, 15, 41, 5, 20, 50}},
+  {act = 'fill', node = 'air', coords = {60, 5, 46, 1, 25, 40}},
+  {act = 'fill', node = 'air', coords = {60, 2, 41, 3, 15, 5}},
+  {act = 'fill', node = 'air', coords = {30, 2, 41, 3, 55, 10}},
+  {act = 'fill', node = 'air', coords = {60, 10, 41, 3, 10, 5}},
+  {act = 'fill', node = 'air', coords = {33, 22, 41, 3, 20, 2}},
+  {act = 'fill', node = 'air', coords = {23, 12, 41, 4, 9, 11}},
+  {act = 'fill', node = 'air', coords = {12, 11, 41, 3, 9, 2}},
+  {act = 'fill', node = 'air', coords = {10, 2, 41, 3, 9, 16}},
+
+
+  {act = 'fill', node = 'air', coords = {66, 13, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 66, 13}},
+  {act = 'fill', node = 'air', coords = {1, 4, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {5, 2, 51, 3, 10, 55}},
+  {act = 'fill', node = 'air', coords = {7, 43, 51, 3, 10, 2}},
+  {act = 'fill', node = 'air', coords = {25, 11, 51, 4, 14, 11}},
+  {act = 'fill', node = 'air', coords = {38, 11, 51, 4, 14, 11}},
+  {act = 'fill', node = 'air', coords = {51, 11, 51, 4, 14, 11}},
+  {act = 'fill', node = 'air', coords = {64, 11, 51, 4, 14, 11}},
+  {act = 'fill', node = 'air', coords = {36, 8, 51, 4, 1, 8}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 9, 1}},
+  {act = 'fill', node = 'air', coords = {29, 2, 51, 3, 12, 2}},
+  {act = 'fill', node = 'air', coords = {36, 2, 51, 3, 14, 2}},
+  {act = 'fill', node = 'air', coords = {49, 2, 51, 3, 23, 2}},
+  {act = 'fill', node = 'air', coords = {62, 2, 51, 3, 14, 2}},
+  {act = 'fill', node = 'air', coords = {5, 15, 51, 3, 65, 2}},
+  {act = 'fill', node = 'air', coords = {10, 2, 51, 3, 35, 30}},
+  {act = 'fill', node = 'air', coords = {18, 2, 51, 3, 55, 10}},
+  {act = 'fill', node = 'air', coords = {14, 2, 51, 3, 55, 10}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 2, coords = {14, 2, 51, 10, 45, 10}},
+
+  {act = 'fill', node = 'air', coords = {14, 2, 61, 3, 22, 23}},
+  {act = 'fill', node = 'air', coords = {14, 61, 61, 5, 4, 18}},
+  {act = 'fill', node = 'air', coords = {16, 14, 66, 1, 6, 14}},
+  {act = 'fill', node = 'air', coords = {36, 14, 66, 1, 6, 14}},
+  {act = 'fill', node = 'air', coords = {56, 14, 66, 1, 6, 14}},
+  {act = 'fill', node = 'air', coords = {50, 10, 61, 5, 22, 21}},
+  {act = 'fill', node = 'default:stone', coords = {48, 14, 60, 1, 34, 42}},
+  {act = 'fill', node = 'default:stone', coords = {34, 14, 60, 1, 54, 2}},
+  {act = 'fill', node = 'air', coords = {23, 17, 61, 3, 54, 2}},
+  {act = 'fill', node = 'air', coords = {13, 12, 61, 4, 56, 16}},
+  {act = 'fill', node = 'air', coords = {25, 9, 61, 4, 70, 9}},
+
+  {act = 'fill', node = 'air', coords = {65, 7, 31, 3, 70, 9}},
+  {act = 'fill', node = 'air', coords = {57, 12, 31, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {57, 2, 31, 3, 11, 28}},
+  {act = 'fill', node = 'air', coords = {35, 10, 31, 3, 70, 9}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 2, coords = {30, 2, 31, 10, 65, 10}},
+  {act = 'fill', node = 'air', coords = {30, 5, 31, 3, 75, 2}},
+  {act = 'fill', node = 'air', coords = {45, 8, 31, 3, 75, 2}},
+
+  {act = 'fill', node = 'air', coords = {57, 6, 21, 6, 1, 78}},
+  {act = 'fill', node = 'air', coords = {63, 9, 21, 3, 58, 2}},
+  {act = 'fill', node = 'air', coords = {72, 7, 21, 3, 56, 8}},
+  {act = 'stair', node = 'stairs:stair_stone', depth = 2, height = 4, param2 = 3, coords = {69, 10, 21, 10, 39, 2}},
+  {act = 'sphere', node = 'air', coords = {10, 20, 11, 20, 2, 20}},
+  {act = 'fill', node = 'default:stone', coords = {10, 20, 11, 10, 2, 20}},
+  {act = 'fill', node = 'default:stone_block', coords = {10, 20, 20, 1, 2, 20}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 1, 2}},
+  {act = 'fill', node = 'air', coords = {35, 13, 21, 5, 21, 27}},
+  {act = 'fill', node = 'air', coords = {37, 16, 21, 5, 55, 10}},
+  {act = 'fill', node = 'air', coords = {51, 2, 21, 3, 53, 2}},
+  {act = 'fill', node = 'air', coords = {35, 2, 21, 3, 48, 9}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 0, coords = {51, 2, 21, 10, 65, 10}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 65, 14}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 0, coords = {65, 2, 21, 10, 60, 10}},
+
+  {act = 'fill', node = 'stairs:stair_stone', param2 = 0, coords = {51, 2, 20, 1, 53, 1}},
+
+  {act = 'fill', node = 'air', coords = {5, 4, 26, 3, 5, 6}},
+  {act = 'fill', node = 'air', coords = {45, 12, 31, 3, 11, 2}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 5, param2 = 1, coords = {40, 5, 26, 5, 11, 2}},
+  {act = 'fill', node = 'air', coords = {5, 35, 26, 3, 11, 2}},
+  {act = 'fill', node = 'default:stone', coords = {9, 22, 25, 1, 11, 2}},
+
+  {act = 'fill', node = 'air', coords = {64, 7, 21, 3, 20, 1}},
+  {act = 'fill', node = 'geomoria:false_wall', coords = {64, 1, 21, 3, 20, 1}},
+  {act = 'fill', node = 'air', coords = {41, 16, 21, 3, 11, 2}},
+  {act = 'fill', node = 'air', coords = {71, 2, 21, 3, 3, 52}},
+  {act = 'fill', node = 'air', coords = {73, 6, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {74, 5, 21, 4, 42, 13}},
+  {act = 'fill', node = 'air', coords = {73, 1, 21, 2, 48, 1}},
+  {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {73, 1, 21, 1, 48, 1}},
+
+  {act = 'fill', node = 'air', coords = {29, 10, 21, 3, 11, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 1, 12}},
+  {act = 'fill', node = 'air', coords = {1, 10, 21, 3, 11, 2}},
+  {act = 'fill', node = 'air', coords = {1, 2, 21, 3, 13, 8}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 21, 58}},
+  {act = 'fill', node = 'air', coords = {21, 14, 21, 3, 55, 2}},
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {1, 14, 21, 4, 25, 50}},
+  {act = 'fill', node = 'air', coords = {2, 12, 25, 1, 26, 48}},
+  {act = 'fill', node = 'air', coords = {3, 10, 26, 1, 27, 46}},
+  {act = 'fill', node = 'air', coords = {4, 8, 27, 1, 28, 44}},
+  {act = 'fill', node = 'air', coords = {15, 4, 21, 3, 49, 2}},
+  {act = 'fill', node = 'default:stone_block', coords = {5, 5, 21, 1, 30, 40}},
+  {act = 'fill', node = 'default:water_source', coords = {6, 3, 21, 1, 31, 38}},
+  {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 2, coords = {70, 2, 31, 10, 60, 10}},
+}
+
+for y = 2, 78, 3 do
+  for x = 56, 63, 7 do
+    table.insert(p, {act = 'fill', node = 'air', coords = {x, 1, 21, 3, y, 1}})
+  end
+end
+
+for _, y in pairs({1, 7, 13, 22, 28, 34, 40, 46, 52}) do
+  table.insert(p, {act = 'fill', node = 'air', coords = {65, 5, 21, 3, y, 5}})
+  table.insert(p, {act = 'fill', node = 'air', coords = {70, 1, 21, 2, y + 2, 1}})
+  table.insert(p, {act = 'fill', node = 'doors:door_wood_a', param2 = 3, coords = {70, 1, 21, 1, y + 2, 1}})
+end
+
+for _, y in pairs({1, 7, 13, 22, 28}) do
+  table.insert(p, {act = 'fill', node = 'air', coords = {74, 5, 21, 3, y, 5}})
+  table.insert(p, {act = 'fill', node = 'air', coords = {73, 1, 21, 2, y + 2, 1}})
+  table.insert(p, {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {73, 1, 21, 1, y + 2, 1}})
+end
+
+for _, y in pairs({24, 30, 36, 42, 48, 59, 65, 71}) do
+  table.insert(p, {act = 'fill', node = 'air', coords = {22, 5, 21, 3, y, 5}})
+  table.insert(p, {act = 'fill', node = 'air', coords = {21, 1, 21, 2, y + 2, 1}})
+  table.insert(p, {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {21, 1, 21, 1, y + 2, 1}})
+end
+
+for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+for i = #p, 1, -1 do
+  table.insert(geomoria_mod.stair_base, 6, p[i])
+end
+
+
+-- %s/\v([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)/{act = 'fill', node = 'air', coords = {\1, \2, 21, 3, \3, \4}},/

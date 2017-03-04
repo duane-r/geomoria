@@ -45,7 +45,7 @@ local function generate(p_minp, p_maxp, seed)
   local avg = (minp.y + maxp.y) / 2
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 
-  local exit_stair = math.abs((csize.z * 10) - minp.z) < csize.z and math.abs((csize.x * 10) - minp.x) < csize.x
+  local exit_stair = (minp.z % (csize.z * 10)) < csize.z and (minp.x % (csize.x * 10)) < csize.x
   if avg < (geomoria_depth - 1) * 80 - 32 or (not exit_stair and avg > geomoria_depth * 80 - 32) then
     return
   end
