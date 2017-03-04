@@ -388,9 +388,9 @@ p = {
   {act = 'fill', node = 'air', coords = {39, 2, 11, 3, 11, 14}},
   {act = 'fill', node = 'default:stone', coords = {61, 1, 21, 6, 59, 2}},
 
-  {act = 'cylinder', node = 'air', axis = 'z', coords = {10, 20, 15, 20, 0, 80}},
-  {act = 'fill', node = 'default:stone', coords = {10, 20, 15, 6, 0, 80}},
-  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 4, 0, 80}},
+  {act = 'cylinder', node = 'air', axis = 'z', coords = {10, 20, 15, 20, 1, 79}},
+  {act = 'fill', node = 'default:stone', coords = {10, 20, 15, 6, 1, 79}},
+  {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 4, 1, 79}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 56, 8}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 36, 8}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 16, 8}},
@@ -416,7 +416,7 @@ p = {
   {act = 'fill', node = 'air', coords = {71, 9, 21, 3, 59, 2}},
   {act = 'fill', node = 'air', coords = {39, 41, 21, 3, 39, 2}},
   {act = 'fill', node = 'air', coords = {71, 9, 21, 3, 19, 2}},
-  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 80}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 1, 79}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 69, 11}},
 
   {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 5, 10}},
@@ -465,12 +465,12 @@ geomoria_mod.plans['fountain court'] = table.copy(p)
 
 
 p = {
-  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 0, 80}},
-  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 0, 80}},
-  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 39, 2}},
-  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 0, 80}},
-  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 59, 2}},
-  {act = 'fill', node = 'air', coords = {0, 80, 21, 3, 19, 2}},
+  {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 1, 79}},
+  {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 1, 79}},
+  {act = 'fill', node = 'air', coords = {1, 79, 21, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 1, 79}},
+  {act = 'fill', node = 'air', coords = {1, 79, 21, 3, 59, 2}},
+  {act = 'fill', node = 'air', coords = {1, 79, 21, 3, 19, 2}},
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do

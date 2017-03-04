@@ -17,6 +17,10 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
 		return
 	end
 
+  if minp.y >= 200 then
+    return
+  end
+
 	local csize = vector.add(vector.subtract(maxp, minp), 1)
 	local write = false
   local wetness = 0
@@ -30,20 +34,6 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
 	local index = 0
 	local index3d = 0
 
-  if not out_of_range then
-    for z = minp.z, maxp.z do
-      for y = minp.y, maxp.y do
-        local ivm = area:index(minp.x, y, z)
-        for x = minp.x, maxp.x do
-          if not geomoria_mod.generate_ores or data[ivm] == node['air'] or data[ivm] == node['default:lava_source'] or data[ivm] == node['default:water_source'] then
-            data[ivm] = node['default:stone']
-          end
-          ivm = ivm + 1
-        end
-      end
-    end
-  end
-
   local plan_name = geomoria_mod.plans_keys[math.random(#geomoria_mod.plans_keys)]
   local plan = geomoria_mod.plans[plan_name]
   local rot = math.random(4) - 1
@@ -55,6 +45,52 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
   elseif exit_stair then
     plan = geomoria_mod.stair_base
     rot = 0
+  end
+
+  if not out_of_range then
+    for _, item in pairs(plan) do
+      if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
+        local coords = item.coords
+
+        if not (coords and item.node and type(coords) == 'table' and type(item.node) == 'string' and #coords == 6) then
+          print('Geomoria: Invalid plan')
+          return
+        end
+
+        local min_x, max_x, min_z, max_z, dy
+
+        if rot == 0 then
+          min_x, max_x = coords[1], coords[1] + coords[2] - 1
+          min_z, max_z = coords[5], coords[5] + coords[6] - 1
+        elseif rot == 1 then
+          min_x, max_x = coords[5], coords[5] + coords[6] - 1
+          min_z, max_z = csize.x - (coords[1] + coords[2]), csize.x - coords[1] - 1
+        elseif rot == 2 then
+          min_x, max_x = csize.x - (coords[1] + coords[2]), csize.x - coords[1] - 1
+          min_z, max_z = csize.z - (coords[5] + coords[6]), csize.z - coords[5] - 1
+        elseif rot == 3 then
+          min_x, max_x = csize.z - (coords[5] + coords[6]), csize.z - coords[5] - 1
+          min_z, max_z = coords[1], coords[1] + coords[2] - 1
+        end
+
+        local min_y = coords[3]
+        local max_y = coords[3] + coords[4] - 1
+        if item.act == 'stair' then
+          max_y = max_y + 4
+        end
+
+        for dz = min_z - 2, max_z + 2 do
+          for dy = min_y - 2, max_y + 2 do
+            for dx = min_x - 2, max_x + 2 do
+              if dx >= 0 and dx <= 79 and dy >= 0 and dy <= 79 and dz >= 0 and dz <= 79 then
+                local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
+                data[ivm] = node['default:stone']
+              end
+            end
+          end
+        end
+      end
+    end
   end
 
   for _, item in pairs(plan) do
@@ -83,11 +119,6 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
         --
       else
         p2 = nil
-      end
-
-      if not (coords and item.node and type(coords) == 'table' and type(item.node) == 'string' and #coords == 6) then
-        print('Geomoria: Invalid plan')
-        return
       end
 
       local min_x, max_x, min_z, max_z, dy

@@ -101,6 +101,11 @@ local function generate(p_minp, p_maxp, seed)
   end
 
   local write, wetness = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node, heightmap)
+
+  if not write then
+    return
+  end
+
   if wetness == 0 then
     wetness = 20
   else
