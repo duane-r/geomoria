@@ -8,6 +8,12 @@
 -- ladders:  2 X+   3 X-   4 Z+   5 Z-
 
 
+local placeholder_y51 = {
+  {act = 'fill', node = 'air', coords = {0, 80, 51, 3, 39, 2}},
+  {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 0, 80}},
+}
+
+
 local p = {
   {act = 'fill', node = 'air', line = 'default:stone_block', treasure = 1, coords = {1, 78, 21, 38, 1, 78}},
   {act = 'fill', node = 'default:stone_block', coords = {1, 78, 50, 1, 1, 78}},
@@ -309,6 +315,10 @@ for _, item in pairs(geomoria_mod.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
+for _, item in pairs(placeholder_y51) do
+  table.insert(p, 2, table.copy(item))
+end
+
 geomoria_mod.plans['silly straw'] = table.copy(p)
 
 
@@ -333,6 +343,10 @@ p = {
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -461,6 +475,10 @@ for _, item in pairs(geomoria_mod.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
+for _, item in pairs(placeholder_y51) do
+  table.insert(p, 2, table.copy(item))
+end
+
 geomoria_mod.plans['fountain court'] = table.copy(p)
 
 
@@ -474,6 +492,10 @@ p = {
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -519,6 +541,10 @@ p = {
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -587,6 +613,10 @@ p = {
 }
 
 for _, item in pairs(geomoria_mod.default_exits) do
+  table.insert(p, 2, table.copy(item))
+end
+
+for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -703,6 +733,10 @@ for _, o in pairs({0, 43}) do
       table.insert(p, i)
     end
   end
+end
+
+for _, item in pairs(placeholder_y51) do
+  table.insert(p, 2, table.copy(item))
 end
 
 geomoria_mod.plans['prison'] = table.copy(p)
