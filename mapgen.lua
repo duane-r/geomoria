@@ -3,7 +3,7 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
-local DEBUG = true
+local DEBUG = false
 local max_depth = 31000
 local geomoria_depth = geomoria_mod.geomoria_depth
 
