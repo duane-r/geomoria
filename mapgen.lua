@@ -3,20 +3,25 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
-local DEBUG
+local DEBUG = true
 local max_depth = 31000
 local geomoria_depth = geomoria_mod.geomoria_depth
 
 
 local ground_nodes = {}
-ground_nodes[minetest.get_content_id('default:stone')] = true
-ground_nodes[minetest.get_content_id('default:desert_stone')] = true
-ground_nodes[minetest.get_content_id('default:sandstone')] = true
-ground_nodes[minetest.get_content_id('default:dirt')] = true
-ground_nodes[minetest.get_content_id('default:sand')] = true
-ground_nodes[minetest.get_content_id('default:dirt_with_grass')] = true
-ground_nodes[minetest.get_content_id('default:dirt_with_snow')] = true
-ground_nodes[minetest.get_content_id('default:dirt_with_dry_grass')] = true
+local ground_nodes_names = {
+  'default:desert_stone',
+  'default:dirt',
+  'default:dirt_with_dry_grass',
+  'default:dirt_with_grass',
+  'default:dirt_with_snow',
+  'default:sand',
+  'default:sandstone',
+  'default:stone',
+}
+for _, i in pairs(ground_nodes_names) do
+  ground_nodes[minetest.get_content_id(i)] = true
+end
 
 
 -- This table looks up nodes that aren't already stored.
@@ -34,6 +39,10 @@ local node = setmetatable({}, {
 
 local data = {}
 local p2data = {}
+
+
+local fissure_noise_map, damage_noise_map
+local fissure_noise, damage_noise = {}, {}
 
 
 local function generate(p_minp, p_maxp, seed)
@@ -94,10 +103,18 @@ local function generate(p_minp, p_maxp, seed)
     end
   end
 
-  local fissure_noise, damage_noise
   if geomoria_mod.add_fissures then
-    damage_noise = minetest.get_perlin_map({offset = 0, scale = 0.5, seed = -6827, spread = {x = 200, y = 200, z = 200}, octaves = 3, persist = 0.8, lacunarity = 2}, csize):get2dMap_flat({x=minp.x, y=minp.z})
-    fissure_noise = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.5, lacunarity = 2}, csize):get3dMap_flat(minp)
+    if not (damage_noise_map and fissure_noise_map) then
+      damage_noise_map = minetest.get_perlin_map({offset = 0, scale = 0.5, seed = -6827, spread = {x = 200, y = 200, z = 200}, octaves = 3, persist = 0.8, lacunarity = 2}, csize)
+      fissure_noise_map = minetest.get_perlin_map({offset = 0, scale = 1, seed = -8402, spread = {x = 8, y = 64, z = 8}, octaves = 3, persist = 0.5, lacunarity = 2}, csize)
+
+      if not (damage_noise_map and fissure_noise_map) then
+        return
+      end
+    end
+
+    damage_noise = damage_noise_map:get2dMap_flat({x=minp.x, y=minp.z}, damage_noise)
+    fissure_noise = fissure_noise_map:get3dMap_flat(minp, fissure_noise)
   end
 
   local write, wetness = geomoria_mod.geomorph(minp, maxp, data, p2data, area, node, heightmap)

@@ -3,12 +3,9 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
-local max_depth = 31000
-
-
-newnode = geomoria_mod.clone_node("air")
-newnode.light_source = 14
-minetest.register_node("geomoria:bright_air", newnode)
+--newnode = geomoria_mod.clone_node("air")
+--newnode.light_source = 14
+--minetest.register_node("geomoria:bright_air", newnode)
 
 
 
