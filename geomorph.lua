@@ -91,17 +91,15 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
   end
 
   for _, item in pairs(plan) do
-    if item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
+    if item.param then
+      if item.param == 'wet' then
+        wetness = 1
+      elseif item.param == 'dry' then
+        wetness = -1
+      end
+    elseif item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
       local coords = item.coords
       local p2 = item.param2
-
-      if item.node == 'default:lava_source' then
-        wetness = wetness - 10 * (coords[2] * coords[4] * coords[6])
-      elseif item.node == 'default:water_source' then
-        wetness = wetness + 2 * (coords[2] * coords[4] * coords[6])
-      elseif item.node == 'default:dirt' then
-        wetness = wetness + (coords[2] * coords[4] * coords[6])
-      end
 
       if p2 and item.act == 'ladder' then
         -- 2 X+   3 X-   4 Z+   5 Z-
@@ -140,9 +138,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
             for dy = coords[3] - 1, coords[3] + coords[4] do
               for dx = min_x - 1, max_x + 1 do
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                if data[ivm] == node['default:stone'] then
-                  data[ivm] = node[item.line]
-                end
+                data[ivm] = node[item.line]
               end
             end
           end
@@ -151,9 +147,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
           for dz = min_z - 1, max_z + 1 do
             for dx = min_x - 1, max_x + 1 do
               local ivm = area:index(minp.x + dx, minp.y + coords[3] - 1, minp.z + dz)
-              if data[ivm] == node['default:stone'] then
-                data[ivm] = node[item.floor]
-              end
+              data[ivm] = node[item.floor]
             end
           end
         end

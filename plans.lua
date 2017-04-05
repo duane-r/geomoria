@@ -43,6 +43,7 @@ geomoria_mod.plans['pillared room'] = table.copy(p)
 
 
 p = {
+  {param = 'wet'},
   {act = 'fill', node = 'air', coords = {20, 51, 12, 36, 11, 50}},
   {act = 'fill', node = 'default:water_source', treasure = 5, coords = {20, 51, 11, 10, 11, 50}},
   {act = 'fill', node = 'default:stone', coords = {38, 17, 11, 10, 30, 16}},
@@ -323,6 +324,7 @@ geomoria_mod.plans['silly straw'] = table.copy(p)
 
 
 p = {
+  {param = 'dry'},
   {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {1, 78, 21, 5, 1, 78}},
   {act = 'fill', node = 'default:stone', coords = {9, 62, 21, 1, 9, 62}},
   {act = 'fill', node = 'default:stone', coords = {9, 62, 23, 5, 9, 62}},
@@ -366,6 +368,7 @@ node.liquid_alternative_source = "geomoria:water_source_tame"
 minetest.register_node('geomoria:water_flowing_tame', node)
 
 p = {
+  {param = 'wet'},
   {act = 'fill', node = 'air', coords = {29, 2, 11, 3, 55, 16}},
   {act = 'fill', node = 'air', coords = {25, 4, 11, 3, 69, 2}},
   {act = 'fill', node = 'air', coords = {25, 4, 11, 3, 9, 2}},

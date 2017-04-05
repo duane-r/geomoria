@@ -11,6 +11,9 @@ geomoria_mod.plans_keys = {}
 geomoria_mod.geomoria_depth = -1
 
 
+-- Dungeon overgeneration puts mossycobble in inappropriate places.
+minetest.set_mapgen_setting('mg_flags', "nodungeons", true)
+
 geomoria_mod.generate_ores = minetest.setting_getbool('geomoria_generate_ores')
 if geomoria_mod.generate_ores == nil then
 	geomoria_mod.generate_ores = false

@@ -3,9 +3,10 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
-local DEBUG = false
+local DEBUG
 local max_depth = 31000
 local geomoria_depth = geomoria_mod.geomoria_depth
+local math_random = math.random
 
 
 local ground_nodes = {}
@@ -73,34 +74,34 @@ local function generate(p_minp, p_maxp, seed)
 		heightmap = minetest.get_mapgen_object("heightmap")
 
     -- Correct heightmap.
-    if maxp.y < -300 or minp.y > 300 then
-      for i = 1, #heightmap do
-        heightmap[i] = (maxp.y < 0) and max_depth or - max_depth
-      end
-    else
-      local index = 0
-      for z = minp.z, maxp.z do
-        for x = minp.x, maxp.x do
-          index = index + 1
+    --if maxp.y < -300 or minp.y > 300 then
+    --  for i = 1, #heightmap do
+    --    heightmap[i] = (maxp.y < 0) and max_depth or - max_depth
+    --  end
+    --else
+    --  local index = 0
+    --  for z = minp.z, maxp.z do
+    --    for x = minp.x, maxp.x do
+    --      index = index + 1
 
-          local height = heightmap[index]
-          if height and height < maxp.y - 1 and height > minp.y then
-            --nop
-          else
-            height = - max_depth
-            local ivm2 = area:index(x, maxp.y + 8, z)
-            for y = maxp.y + 8, minp.y - 8, -1 do
-              if ground_nodes[data[ivm2]] then
-                height = (y < maxp.y + 8) and y or max_depth
-                break
-              end
-              ivm2 = ivm2 - area.ystride
-            end
-            heightmap[index] = height
-          end
-        end
-      end
-    end
+    --      local height = heightmap[index]
+    --      if height and height < maxp.y - 1 and height > minp.y then
+    --        --nop
+    --      else
+    --        height = - max_depth
+    --        local ivm2 = area:index(x, maxp.y + 8, z)
+    --        for y = maxp.y + 8, minp.y - 8, -1 do
+    --          if ground_nodes[data[ivm2]] then
+    --            height = (y < maxp.y + 8) and y or max_depth
+    --            break
+    --          end
+    --          ivm2 = ivm2 - area.ystride
+    --        end
+    --        heightmap[index] = height
+    --      end
+    --    end
+    --  end
+    --end
   end
 
   if geomoria_mod.add_fissures then
@@ -123,12 +124,9 @@ local function generate(p_minp, p_maxp, seed)
     return
   end
 
-  if wetness == 0 then
-    wetness = 20
-  else
-    wetness = math.floor(20 - (math.abs(wetness) ^ 0.5 * (math.abs(wetness) / wetness)))
+  if not wetness then
+    wetness = 0
   end
-  wetness = wetness <= 2 and 2 or wetness
 
   if not DEBUG and fissure_noise then
     local index = 1
@@ -152,7 +150,7 @@ local function generate(p_minp, p_maxp, seed)
               data[ivm] = node['air']
             end
           elseif (data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block']) and damage > geomoria_mod.damage_level - 0.5 then
-            if wetness and math.random(wetness) == 1 then
+            if (wetness > 0 and math_random(2) == 1) or (wetness == 0 and math_random(10) == 1) then
               data[ivm] = node['default:mossycobble']
             else
               data[ivm] = node['default:cobble']
