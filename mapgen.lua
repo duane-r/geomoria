@@ -151,7 +151,11 @@ local function generate(p_minp, p_maxp, seed)
             end
           elseif (data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block']) and damage > geomoria_mod.damage_level - 0.5 then
             if (wetness > 0 and math_random(2) == 1) or (wetness == 0 and math_random(10) == 1) then
-              data[ivm] = node['default:mossycobble']
+              if minetest.registered_items['fun_caves:glowing_fungal_stone'] and math_random(4) == 1 then
+                data[ivm] = node['fun_caves:glowing_fungal_stone']
+              else
+                data[ivm] = node['default:mossycobble']
+              end
             else
               data[ivm] = node['default:cobble']
             end
