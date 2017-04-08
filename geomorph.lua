@@ -10,16 +10,16 @@
 
 
 geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
-	if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
-		return
-	end
+  if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
+    return
+  end
 
   if minp.y >= 200 then
     return
   end
 
-	local csize = vector.add(vector.subtract(maxp, minp), 1)
-	local write = false
+  local csize = vector.add(vector.subtract(maxp, minp), 1)
+  local write = false
   local wetness = 0
 
   local avg = (minp.y + maxp.y) / 2
@@ -28,8 +28,8 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
     out_of_range = true
   end
 
-	local index = 0
-	local index3d = 0
+  local index = 0
+  local index3d = 0
 
   local plan_name = geomoria_mod.plans_keys[math.random(#geomoria_mod.plans_keys)]
   local plan = geomoria_mod.plans[plan_name]
@@ -97,6 +97,14 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
       elseif item.param == 'dry' then
         wetness = -1
       end
+      --elseif item.hook and type(item.hook) == 'function' then
+      --  local n, pos = item.hook(item.hook_params)
+      --  if type(n) == 'number' and type(pos) == 'table' and type(pos.x) == 'number' and type(pos.y) == 'number' and type(pos.z) == 'number' then
+      --    local ivm = area:index(minp.x + pos.x, minp.y + pos.y, minp.z + pos.z)
+      --    data[ivm] = node[item.line]
+      --  else
+      --    print("Geomoria: Could not interpret hook return values")
+      --  end
     elseif item.act == 'fill' or item.act == 'stair' or item.act == 'ladder' or item.act == 'cylinder' or item.act == 'sphere' then
       local coords = item.coords
       local p2 = item.param2
@@ -214,8 +222,11 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
           local x = minp.x + min_x + math.random(max_x - min_x + 1) - 1
           local y = minp.y + coords[3]
           local z = minp.z + min_z + math.random(max_z - min_z + 1) - 1
-          local ivm = area:index(x, y, z)
-          data[ivm] = node[geomoria_mod.treasure_chest]
+          local n = geomoria_mod.treasure_chest_hook({x=x, y=y, z=z}, min_x, max_x, min_z, max_z, data, area, node)
+          if type(n) == 'number' then
+            local ivm = area:index(x, y, z)
+            data[ivm] = n
+          end
         end
 
         write = true
@@ -339,5 +350,5 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
     end
   end
 
-	return write, wetness
+  return write, wetness
 end

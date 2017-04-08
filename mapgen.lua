@@ -27,14 +27,14 @@ end
 
 -- This table looks up nodes that aren't already stored.
 local node = setmetatable({}, {
-	__index = function(t, k)
-		if not (t and k and type(t) == 'table') then
-			return
-		end
+  __index = function(t, k)
+    if not (t and k and type(t) == 'table') then
+      return
+    end
 
-		t[k] = minetest.get_content_id(k)
-		return t[k]
-	end
+    t[k] = minetest.get_content_id(k)
+    return t[k]
+  end
 })
 
 
@@ -47,31 +47,31 @@ local fissure_noise, damage_noise = {}, {}
 
 
 local function generate(p_minp, p_maxp, seed)
-	if not (p_minp and p_maxp and seed) then
-		return
-	end
+  if not (p_minp and p_maxp and seed) then
+    return
+  end
 
-	local minp, maxp = p_minp, p_maxp
+  local minp, maxp = p_minp, p_maxp
   local avg = (minp.y + maxp.y) / 2
-	local csize = vector.add(vector.subtract(maxp, minp), 1)
+  local csize = vector.add(vector.subtract(maxp, minp), 1)
 
   local exit_stair = (minp.z % (csize.z * 10)) < csize.z and (minp.x % (csize.x * 10)) < csize.x
   if avg < (geomoria_depth - 1) * 80 - 32 or (not exit_stair and avg > geomoria_depth * 80 - 32) then
     return
   end
 
-	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
-	if not (vm and emin and emax) then
-		return
-	end
+  local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
+  if not (vm and emin and emax) then
+    return
+  end
 
-	vm:get_data(data)
+  vm:get_data(data)
   p2data = vm:get_param2_data()
-	local heightmap
-	local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
+  local heightmap
+  local area = VoxelArea:new({MinEdge = emin, MaxEdge = emax})
 
   if exit_stair and minp.y < 200 and avg > geomoria_depth * 80 - 32 then
-		heightmap = minetest.get_mapgen_object("heightmap")
+    heightmap = minetest.get_mapgen_object("heightmap")
 
     -- Correct heightmap.
     --if maxp.y < -300 or minp.y > 300 then
@@ -188,19 +188,19 @@ end
 
 
 if geomoria_mod.path then
-	dofile(geomoria_mod.path .. "/geomorph.lua")
+  dofile(geomoria_mod.path .. "/geomorph.lua")
 end
 
 
 local function pgenerate(...)
-	local status, err = pcall(generate, ...)
-	--local status, err = true
-	--generate(...)
-	if not status then
-		print('Geomoria: Could not generate terrain:')
-		print(dump(err))
-		collectgarbage("collect")
-	end
+  local status, err = pcall(generate, ...)
+  --local status, err = true
+  --generate(...)
+  if not status then
+    print('Geomoria: Could not generate terrain:')
+    print(dump(err))
+    collectgarbage("collect")
+  end
 end
 
 

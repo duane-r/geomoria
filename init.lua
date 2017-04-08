@@ -16,29 +16,42 @@ minetest.set_mapgen_setting('mg_flags', "nodungeons", true)
 
 geomoria_mod.generate_ores = minetest.setting_getbool('geomoria_generate_ores')
 if geomoria_mod.generate_ores == nil then
-	geomoria_mod.generate_ores = false
+  geomoria_mod.generate_ores = false
 end
 
 geomoria_mod.add_fissures = minetest.setting_getbool('geomoria_add_fissures')
 if geomoria_mod.add_fissures == nil then
-	geomoria_mod.add_fissures = true
+  geomoria_mod.add_fissures = true
 end
 
 geomoria_mod.cheap_lighting = minetest.setting_getbool('geomoria_cheap_lighting')
 if geomoria_mod.cheap_lighting == nil then
-	geomoria_mod.cheap_lighting = false
+  geomoria_mod.cheap_lighting = false
 end
 
 geomoria_mod.damage_level = minetest.setting_getbool('geomoria_damage_level')
 geomoria_mod.damage_level = (13 - (geomoria_mod.damage_level or 5)) / 10
 
 
+local treasure_chest = 'default:chest'
 if minetest.registered_items['booty:coffer'] then
-  geomoria_mod.treasure_chest = 'booty:coffer'
-else
-  geomoria_mod.treasure_chest = 'default:chest'
+  treasure_chest = 'booty:coffer'
 end
-print(geomoria_mod.treasure_chest)
+
+
+-- This can be overridden to do complicated treasure placement.
+--  'pos' is the coordinate where a chest would go.
+--  'min/max' values are the coordinates of the room or hall.
+--  'data' is the mapgen data for that chunk.
+--  'area' is the VoxelArea structure for the chunk.
+-- The function must return the get_content_id value for a node.
+--
+-- If you override this, it might make sense to save the original
+--  function and call it, in case someone else overrides it.
+--  However, there can be only one return value.
+function geomoria_mod.treasure_chest_hook(pos, min_x, max_x, min_z, max_z, data, area, node)
+  return node[treasure_chest]
+end
 
 
 geomoria_mod.default_exits = {
@@ -62,13 +75,13 @@ geomoria_mod.default_exits = {
 
 
 function geomoria_mod.clone_node(name)
-	if not (name and type(name) == 'string') then
-		return
-	end
+  if not (name and type(name) == 'string') then
+    return
+  end
 
-	local node = minetest.registered_nodes[name]
-	local node2 = table.copy(node)
-	return node2
+  local node = minetest.registered_nodes[name]
+  local node2 = table.copy(node)
+  return node2
 end
 
 
