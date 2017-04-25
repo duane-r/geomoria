@@ -128,7 +128,7 @@ local function generate(p_minp, p_maxp, seed)
     wetness = 0
   end
 
-  if not DEBUG and fissure_noise then
+  if not DEBUG and fissure_noise and not ((minp.y + maxp.y) / 2 > geomoria_mod.geomoria_depth * 80 - 32) then
     local index = 1
     local index2 = 1
     for z = minp.z, maxp.z do
