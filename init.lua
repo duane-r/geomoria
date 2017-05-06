@@ -10,6 +10,11 @@ geomoria_mod.plans = {}
 geomoria_mod.plans_keys = {}
 geomoria_mod.geomoria_depth = -1
 
+geomoria_mod.min_x = -31000
+geomoria_mod.min_z = -31000
+geomoria_mod.max_x = 31000
+geomoria_mod.max_z = 31000
+
 
 -- Dungeon overgeneration puts mossycobble in inappropriate places.
 minetest.set_mapgen_setting('mg_flags', "nodungeons", true)
