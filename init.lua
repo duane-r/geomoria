@@ -42,6 +42,8 @@ local treasure_chest = 'default:chest'
 if minetest.registered_items['booty:coffer'] then
   treasure_chest = 'booty:coffer'
 end
+-- Using this old reference will NOT call the hook function.
+geomoria_mod.treasure_chest = treasure_chest
 
 
 -- This can be overridden to do complicated treasure placement.

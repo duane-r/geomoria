@@ -51,6 +51,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
 
         if not (coords and item.node and type(coords) == 'table' and type(item.node) == 'string' and #coords == 6) then
           print('Geomoria: Invalid plan')
+          print(dump(item))
           return
         end
 
