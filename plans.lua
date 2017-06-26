@@ -8,6 +8,12 @@
 -- ladders:  2 X+   3 X-   4 Z+   5 Z-
 
 
+local building_stone = 'geomoria:stone'
+if geomoria.generate_ores then
+  building_stone = 'default:stone'
+end
+
+
 local placeholder_y51 = {
   {act = 'fill', node = 'air', coords = {0, 80, 51, 3, 39, 2}},
   {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 0, 80}},
@@ -22,7 +28,7 @@ local p = {
   {act = 'stair', node = 'stairs:stair_stone', depth = 3, height = 4, param2 = 0, coords = {77, 2, 21, 30, 25, 30}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -30,7 +36,7 @@ for z = 7, 78, 9 do
   for x = 7, 78, 9 do
     local i = {act = 'fill', node = 'default:stone_block', coords = {z, 2, 21, 38, x, 2}}
     table.insert(p, i)
-    if geomoria_mod.cheap_lighting then
+    if geomoria.cheap_lighting then
       for y = 25, 57, 9 do
         i = {act = 'fill', node = 'default:meselamp', coords = {z, 2, y, 1, x, 2}}
         table.insert(p, i)
@@ -39,15 +45,15 @@ for z = 7, 78, 9 do
   end
 end
 
-geomoria_mod.plans['pillared room'] = table.copy(p)
+geomoria.plans['pillared room'] = table.copy(p)
 
 
 p = {
   {param = 'wet'},
   {act = 'fill', node = 'air', coords = {20, 51, 12, 36, 11, 50}},
   {act = 'fill', node = 'default:water_source', treasure = 5, coords = {20, 51, 11, 10, 11, 50}},
-  {act = 'fill', node = 'default:stone', coords = {38, 17, 11, 10, 30, 16}},
-  {act = 'fill', node = 'default:stone', coords = {39, 2, 11, 10, 11, 19}},
+  {act = 'fill', node = building_stone, coords = {38, 17, 11, 10, 30, 16}},
+  {act = 'fill', node = building_stone, coords = {39, 2, 11, 10, 11, 19}},
   {act = 'fill', node = 'default:water_source', treasure = 3, coords = {49, 30, 11, 5, 62, 17}},
   {act = 'fill', node = 'default:water_source', coords = {17, 32, 11, 2, 69, 2}},
   {act = 'fill', node = 'default:water_source', coords = {43, 2, 11, 2, 61, 10}},
@@ -107,17 +113,17 @@ p = {
   {act = 'fill', node = 'air', coords = {28, 8, 51, 3, 27, 3}},
   {act = 'fill', node = 'air', coords = {44, 8, 51, 3, 55, 3}},
   {act = 'fill', node = 'air', coords = {28, 8, 51, 3, 55, 3}},
-  {act = 'fill', node = 'default:stone', coords = {37, 5, 51, 6, 40, 5}},
+  {act = 'fill', node = building_stone, coords = {37, 5, 51, 6, 40, 5}},
   {act = 'fill', node = 'air', coords = {68, 1, 51, 3, 34, 2}},
   {act = 'fill', node = 'air', coords = {68, 1, 51, 3, 44, 2}},
   {act = 'fill', node = 'air', coords = {39, 2, 51, 3, 1, 29}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['reservoir'] = table.copy(p)
+geomoria.plans['reservoir'] = table.copy(p)
 
 
 p = {
@@ -209,11 +215,11 @@ for x = 9, 69, 15 do
   end
 end
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['market'] = table.copy(p)
+geomoria.plans['market'] = table.copy(p)
 
 
 p = {
@@ -295,12 +301,12 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {63, 2, 31, 10, 48, 10}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {63, 2, 31, 10, 7, 10}},
 
-  {act = 'fill', node = 'default:stone', coords = {20, 2, 30, 1, 17, 6}},
-  {act = 'fill', node = 'default:stone', coords = {39, 2, 30, 1, 17, 6}},
-  {act = 'fill', node = 'default:stone', coords = {58, 2, 30, 1, 17, 6}},
-  {act = 'fill', node = 'default:stone', coords = {56, 6, 30, 1, 63, 3}},
-  {act = 'fill', node = 'default:stone', coords = {39, 2, 30, 1, 30, 20}},
-  {act = 'fill', node = 'default:stone', coords = {30, 20, 30, 1, 39, 2}},
+  {act = 'fill', node = building_stone, coords = {20, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = building_stone, coords = {39, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = building_stone, coords = {58, 2, 30, 1, 17, 6}},
+  {act = 'fill', node = building_stone, coords = {56, 6, 30, 1, 63, 3}},
+  {act = 'fill', node = building_stone, coords = {39, 2, 30, 1, 30, 20}},
+  {act = 'fill', node = building_stone, coords = {30, 20, 30, 1, 39, 2}},
 
   {act = 'fill', node = 'geomoria:false_wall', coords = {1, 2, 21, 3, 58, 1}},
   {act = 'fill', node = 'geomoria:false_wall', coords = {21, 1, 21, 3, 39, 2}},
@@ -312,7 +318,7 @@ p = {
   {act = 'fill', node = 'geomoria:false_wall', coords = {13, 2, 31, 3, 34, 1}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -320,31 +326,31 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['silly straw'] = table.copy(p)
+geomoria.plans['silly straw'] = table.copy(p)
 
 
 p = {
   {param = 'dry'},
   {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {1, 78, 21, 5, 1, 78}},
-  {act = 'fill', node = 'default:stone', coords = {9, 62, 21, 1, 9, 62}},
-  {act = 'fill', node = 'default:stone', coords = {9, 62, 23, 5, 9, 62}},
+  {act = 'fill', node = building_stone, coords = {9, 62, 21, 1, 9, 62}},
+  {act = 'fill', node = building_stone, coords = {9, 62, 23, 5, 9, 62}},
   {act = 'fill', node = 'air', coords = {10, 60, 11, 25, 10, 60}},
   {act = 'fill', node = 'default:lava_source', coords = {10, 60, 11, 5, 10, 60}},
-  {act = 'fill', node = 'default:stone', coords = {25, 30, 11, 9, 25, 30}},
+  {act = 'fill', node = building_stone, coords = {25, 30, 11, 9, 25, 30}},
   {act = 'fill', node = 'default:stone_block', coords = {25, 30, 20, 1, 25, 30}},
-  {act = 'fill', node = 'default:stone', coords = {39, 2, 20, 1, 55, 15}},
-  {act = 'fill', node = 'default:stone', coords = {39, 2, 20, 1, 10, 15}},
-  {act = 'fill', node = 'default:stone', coords = {10, 15, 20, 1, 39, 2}},
-  {act = 'fill', node = 'default:stone', coords = {55, 15, 20, 1, 39, 2}},
+  {act = 'fill', node = building_stone, coords = {39, 2, 20, 1, 55, 15}},
+  {act = 'fill', node = building_stone, coords = {39, 2, 20, 1, 10, 15}},
+  {act = 'fill', node = building_stone, coords = {10, 15, 20, 1, 39, 2}},
+  {act = 'fill', node = building_stone, coords = {55, 15, 20, 1, 39, 2}},
   {act = 'fill', node = 'air', coords = {70, 1, 21, 3, 39, 2}},
   {act = 'fill', node = 'air', coords = {9, 1, 21, 3, 39, 2}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 70, 1}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 9, 1}},
-  {act = 'fill', node = 'default:stone', coords = {37, 6, 20, 2, 37, 6}},
+  {act = 'fill', node = building_stone, coords = {37, 6, 20, 2, 37, 6}},
   {act = 'fill', node = 'default:lava_source', coords = {38, 4, 20, 2, 38, 4}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -352,16 +358,16 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['lake of fire'] = table.copy(p)
+geomoria.plans['lake of fire'] = table.copy(p)
 
 
-local node = geomoria_mod.clone_node('default:water_source')
+local node = geomoria.clone_node('default:water_source')
 node.liquid_range = 2
 node.liquid_alternative_flowing = "geomoria:water_flowing_tame"
 node.liquid_alternative_source = "geomoria:water_source_tame"
 minetest.register_node('geomoria:water_source_tame', node)
 
-local node = geomoria_mod.clone_node('default:water_flowing')
+local node = geomoria.clone_node('default:water_flowing')
 node.liquid_range = 2
 node.liquid_alternative_flowing = "geomoria:water_flowing_tame"
 node.liquid_alternative_source = "geomoria:water_source_tame"
@@ -388,11 +394,11 @@ p = {
   {act = 'fill', node = 'air', treasure = 3, coords = {15, 10, 11, 6, 35, 10}},
   {act = 'fill', node = 'air', treasure = 3, coords = {15, 10, 11, 6, 50, 10}},
   {act = 'fill', node = 'air', treasure = 3, coords = {15, 10, 11, 6, 65, 10}},
-  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 8, 4}},
-  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 23, 4}},
-  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 38, 4}},
-  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 53, 4}},
-  {act = 'fill', node = 'default:stone', coords = {18, 4, 11, 6, 68, 4}},
+  {act = 'fill', node = building_stone, coords = {18, 4, 11, 6, 8, 4}},
+  {act = 'fill', node = building_stone, coords = {18, 4, 11, 6, 23, 4}},
+  {act = 'fill', node = building_stone, coords = {18, 4, 11, 6, 38, 4}},
+  {act = 'fill', node = building_stone, coords = {18, 4, 11, 6, 53, 4}},
+  {act = 'fill', node = building_stone, coords = {18, 4, 11, 6, 68, 4}},
   {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 9, 2}},
   {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 24, 2}},
   {act = 'fill', node = 'default:water_source', coords = {19, 2, 11, 10, 39, 2}},
@@ -403,10 +409,10 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 2, coords = {39, 2, 11, 10, 1, 10}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {39, 10, 11, 10, 19, 2}},
   {act = 'fill', node = 'air', coords = {39, 2, 11, 3, 11, 14}},
-  {act = 'fill', node = 'default:stone', coords = {61, 1, 21, 6, 59, 2}},
+  {act = 'fill', node = building_stone, coords = {61, 1, 21, 6, 59, 2}},
 
   {act = 'cylinder', node = 'air', axis = 'z', coords = {10, 20, 15, 20, 1, 79}},
-  {act = 'fill', node = 'default:stone', coords = {10, 20, 15, 6, 1, 79}},
+  {act = 'fill', node = building_stone, coords = {10, 20, 15, 6, 1, 79}},
   {act = 'fill', node = 'air', floor = 'default:stone_block', coords = {10, 20, 21, 4, 1, 79}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 56, 8}},
   {act = 'fill', node = 'air', coords = {1, 8, 21, 4, 36, 8}},
@@ -436,25 +442,25 @@ p = {
   {act = 'fill', node = 'air', coords = {59, 2, 21, 3, 1, 79}},
   {act = 'fill', node = 'air', coords = {39, 2, 21, 3, 69, 11}},
 
-  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 5, 10}},
+  {act = 'fill', node = building_stone, coords = {15, 10, 21, 1, 5, 10}},
   {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 6, 8}},
-  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 9, 2}},
+  {act = 'fill', node = building_stone, coords = {19, 2, 21, 2, 9, 2}},
   {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 9, 2}},
-  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 20, 10}},
+  {act = 'fill', node = building_stone, coords = {15, 10, 21, 1, 20, 10}},
   {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 21, 8}},
-  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 24, 2}},
+  {act = 'fill', node = building_stone, coords = {19, 2, 21, 2, 24, 2}},
   {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 24, 2}},
-  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 35, 10}},
+  {act = 'fill', node = building_stone, coords = {15, 10, 21, 1, 35, 10}},
   {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 36, 8}},
-  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 39, 2}},
+  {act = 'fill', node = building_stone, coords = {19, 2, 21, 2, 39, 2}},
   {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 39, 2}},
-  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 50, 10}},
+  {act = 'fill', node = building_stone, coords = {15, 10, 21, 1, 50, 10}},
   {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 51, 8}},
-  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 54, 2}},
+  {act = 'fill', node = building_stone, coords = {19, 2, 21, 2, 54, 2}},
   {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 54, 2}},
-  {act = 'fill', node = 'default:stone', coords = {15, 10, 21, 1, 65, 10}},
+  {act = 'fill', node = building_stone, coords = {15, 10, 21, 1, 65, 10}},
   {act = 'fill', node = 'default:water_source', coords = {16, 8, 21, 1, 66, 8}},
-  {act = 'fill', node = 'default:stone', coords = {19, 2, 21, 2, 69, 2}},
+  {act = 'fill', node = building_stone, coords = {19, 2, 21, 2, 69, 2}},
   {act = 'fill', node = 'geomoria:water_source_tame', coords = {19, 2, 23, 1, 69, 2}},
 
   {act = 'fill', node = 'air', coords = {51, 20, 31, 5, 65, 10}},
@@ -462,7 +468,7 @@ p = {
   {act = 'fill', node = 'air', coords = {55, 2, 31, 3, 25, 27}},
   {act = 'fill', node = 'air', coords = {60, 2, 31, 3, 41, 24}},
   {act = 'fill', node = 'air', coords = {57, 8, 31, 3, 39, 2}},
-  {act = 'fill', node = 'default:stone', coords = {54, 4, 11, 6, 49, 4}},
+  {act = 'fill', node = building_stone, coords = {54, 4, 11, 6, 49, 4}},
   {act = 'fill', node = 'air', coords = {55, 2, 6, 25, 50, 2}},
   {act = 'fill', node = 'geomoria:false_wall', coords = {55, 2, 30, 1, 50, 2}},
   {act = 'fill', node = 'air', treasure = 1, coords = {65, 10, 31, 5, 35, 10}},
@@ -474,7 +480,7 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {41, 10, 21, 10, 69, 2}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -482,7 +488,7 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['fountain court'] = table.copy(p)
+geomoria.plans['fountain court'] = table.copy(p)
 
 
 p = {
@@ -494,7 +500,7 @@ p = {
   {act = 'fill', node = 'air', coords = {1, 79, 21, 3, 19, 2}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -502,12 +508,12 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['crossroads'] = table.copy(p)
+geomoria.plans['crossroads'] = table.copy(p)
 
 
 p = {
   {act = 'fill', node = 'default:dirt', coords = {5, 70, 19, 2, 5, 70}},
-  {act = 'fill', node = geomoria_mod.treasure_chest, random = 200, coords = {5, 70, 19, 1, 5, 70}},
+  {act = 'fill', node = geomoria.treasure_chest, random = 200, coords = {5, 70, 19, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {5, 70, 21, 7, 5, 70}},
   {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 21, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 75, 5}},
@@ -526,7 +532,7 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {61, 10, 21, 10, 75, 2}},
   {act = 'stair', node = 'stairs:stair_stone', param2 = 3, coords = {9, 10, 21, 10, 3, 2}},
   {act = 'fill', node = 'default:dirt', coords = {5, 70, 29, 2, 5, 70}},
-  {act = 'fill', node = geomoria_mod.treasure_chest, random = 200, coords = {5, 70, 29, 1, 5, 70}},
+  {act = 'fill', node = geomoria.treasure_chest, random = 200, coords = {5, 70, 29, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {5, 70, 31, 7, 5, 70}},
   {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 31, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {71, 6, 31, 3, 75, 2}},
@@ -536,14 +542,14 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 0, coords = {3, 2, 31, 10, 5, 10}},
 
   {act = 'fill', node = 'default:dirt', coords = {5, 70, 39, 2, 5, 70}},
-  {act = 'fill', node = geomoria_mod.treasure_chest, random = 200, coords = {5, 70, 39, 1, 5, 70}},
+  {act = 'fill', node = geomoria.treasure_chest, random = 200, coords = {5, 70, 39, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {5, 70, 41, 7, 5, 70}},
   {act = 'fill', node = 'flowers:mushroom_brown', random = 4, coords = {5, 70, 41, 1, 5, 70}},
   {act = 'fill', node = 'air', coords = {75, 2, 41, 3, 60, 5}},
   {act = 'fill', node = 'air', coords = {3, 2, 41, 3, 15, 5}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -551,7 +557,7 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['mushroom garden'] = table.copy(p)
+geomoria.plans['mushroom garden'] = table.copy(p)
 
 
 p = {
@@ -615,7 +621,7 @@ p = {
   {act = 'stair', node = 'stairs:stair_stone', param2 = 1, coords = {21, 8, 31, 8, 13, 2}},
 }
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
@@ -623,7 +629,7 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['arena'] = table.copy(p)
+geomoria.plans['arena'] = table.copy(p)
 
 
 p = {
@@ -742,22 +748,22 @@ for _, item in pairs(placeholder_y51) do
   table.insert(p, 2, table.copy(item))
 end
 
-geomoria_mod.plans['prison'] = table.copy(p)
+geomoria.plans['prison'] = table.copy(p)
 
 
 p = {
   {act = 'sphere', node = 'air', coords = {1, 78, -18, 78, 1, 78}},
-  {act = 'fill', node = 'default:stone', coords = {1, 78, 0, 21, 1, 78}},
+  {act = 'fill', node = building_stone, coords = {1, 78, 0, 21, 1, 78}},
   {act = 'fill', node = 'default:stone_block', coords = {1, 78, 20, 1, 1, 78}},
 }
 
 
-geomoria_mod.stair_height = {
-  {act = 'fill', node = 'default:stone', coords = {26, 5, 0, 5, 23, 31}},
-  {act = 'fill', node = 'default:stone', coords = {26, 28, 0, 26, 49, 5}},
-  {act = 'fill', node = 'default:stone', coords = {49, 5, 19, 27, 29, 28}},
-  {act = 'fill', node = 'default:stone', coords = {29, 25, 39, 27, 26, 5}},
-  {act = 'fill', node = 'default:stone', coords = {26, 5, 59, 21, 26, 28}},
+geomoria.stair_height = {
+  {act = 'fill', node = building_stone, coords = {26, 5, 0, 5, 23, 31}},
+  {act = 'fill', node = building_stone, coords = {26, 28, 0, 26, 49, 5}},
+  {act = 'fill', node = building_stone, coords = {49, 5, 19, 27, 29, 28}},
+  {act = 'fill', node = building_stone, coords = {29, 25, 39, 27, 26, 5}},
+  {act = 'fill', node = building_stone, coords = {26, 5, 59, 21, 26, 28}},
   {act = 'fill', node = 'air', coords = {27, 3, 0, 4, 47, 6}},
   {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 1, coords = {30, 20, 0, 20, 50, 3}},
   {act = 'fill', node = 'air', coords = {47, 6, 20, 4, 50, 3}},
@@ -768,11 +774,11 @@ geomoria_mod.stair_height = {
   {act = 'stair', node = 'stairs:stair_stone', height = 4, depth = 3, param2 = 0, coords = {27, 3, 60, 21, 30, 20}},
 }
 
-geomoria_mod.stair_base = table.copy(geomoria_mod.stair_height)
---table.insert(geomoria_mod.stair_base, {})
+geomoria.stair_base = table.copy(geomoria.stair_height)
+--table.insert(geomoria.stair_base, {})
 p = {
   {act = 'sphere', node = 'air', coords = {35, 40, 31, 40, 35, 40}},
-  {act = 'fill', node = 'default:stone', coords = {35, 40, 31, 20, 35, 40}},
+  {act = 'fill', node = building_stone, coords = {35, 40, 31, 20, 35, 40}},
   {act = 'fill', node = 'default:stone_block', coords = {35, 40, 50, 1, 35, 40}},
 
   {act = 'stair', node = 'stairs:stair_stone', height = 4, param2 = 3, coords = {50, 10, 41, 10, 10, 2}},
@@ -816,8 +822,8 @@ p = {
   {act = 'fill', node = 'air', coords = {36, 14, 66, 1, 6, 14}},
   {act = 'fill', node = 'air', coords = {56, 14, 66, 1, 6, 14}},
   {act = 'fill', node = 'air', coords = {50, 10, 61, 5, 22, 21}},
-  {act = 'fill', node = 'default:stone', coords = {48, 14, 60, 1, 34, 42}},
-  {act = 'fill', node = 'default:stone', coords = {34, 14, 60, 1, 54, 2}},
+  {act = 'fill', node = building_stone, coords = {48, 14, 60, 1, 34, 42}},
+  {act = 'fill', node = building_stone, coords = {34, 14, 60, 1, 54, 2}},
   {act = 'fill', node = 'air', coords = {23, 17, 61, 3, 54, 2}},
   {act = 'fill', node = 'air', coords = {13, 12, 61, 4, 56, 16}},
   {act = 'fill', node = 'air', coords = {25, 9, 61, 4, 70, 9}},
@@ -835,7 +841,7 @@ p = {
   {act = 'fill', node = 'air', coords = {72, 7, 21, 3, 56, 8}},
   {act = 'stair', node = 'stairs:stair_stone', depth = 2, height = 4, param2 = 3, coords = {69, 10, 21, 10, 39, 2}},
   {act = 'sphere', node = 'air', coords = {10, 20, 11, 20, 2, 20}},
-  {act = 'fill', node = 'default:stone', coords = {10, 20, 11, 10, 2, 20}},
+  {act = 'fill', node = building_stone, coords = {10, 20, 11, 10, 2, 20}},
   {act = 'fill', node = 'default:stone_block', coords = {10, 20, 20, 1, 2, 20}},
   {act = 'fill', node = 'air', coords = {19, 2, 21, 3, 1, 2}},
   {act = 'fill', node = 'air', coords = {35, 13, 21, 5, 21, 27}},
@@ -852,7 +858,7 @@ p = {
   {act = 'fill', node = 'air', coords = {45, 12, 31, 3, 11, 2}},
   {act = 'stair', node = 'stairs:stair_stone', height = 5, param2 = 1, coords = {40, 5, 26, 5, 11, 2}},
   {act = 'fill', node = 'air', coords = {5, 35, 26, 3, 11, 2}},
-  {act = 'fill', node = 'default:stone', coords = {9, 22, 25, 1, 11, 2}},
+  {act = 'fill', node = building_stone, coords = {9, 22, 25, 1, 11, 2}},
 
   {act = 'fill', node = 'air', coords = {64, 7, 21, 3, 20, 1}},
   {act = 'fill', node = 'geomoria:false_wall', coords = {64, 1, 21, 3, 20, 1}},
@@ -903,13 +909,18 @@ for _, y in pairs({24, 30, 36, 42, 48, 59, 65, 71}) do
   table.insert(p, {act = 'fill', node = 'doors:door_wood_b', param2 = 1, coords = {21, 1, 21, 1, y + 2, 1}})
 end
 
-for _, item in pairs(geomoria_mod.default_exits) do
+for _, item in pairs(geomoria.default_exits) do
   table.insert(p, 2, table.copy(item))
 end
 
 for i = #p, 1, -1 do
-  table.insert(geomoria_mod.stair_base, 6, p[i])
+  table.insert(geomoria.stair_base, 6, p[i])
 end
 
 
 -- %s/\v([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+)/{act = 'fill', node = 'air', coords = {\1, \2, 21, 3, \3, \4}},/
+
+
+for k, v in pairs(geomoria.plans) do
+  geomoria.plans_keys[#geomoria.plans_keys+1] = k
+end

@@ -3,13 +3,18 @@
 -- Distributed under the LGPLv2.1 (https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 
---newnode = geomoria_mod.clone_node("air")
+--newnode = geomoria.clone_node("air")
 --newnode.light_source = 14
 --minetest.register_node("geomoria:bright_air", newnode)
 
 
+local building_stone = 'geomoria:stone'
+if geomoria.generate_ores then
+  building_stone = 'default:stone'
+end
 
-geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
+
+geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
   if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
     return
   end
@@ -19,29 +24,33 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
   end
 
   local csize = vector.add(vector.subtract(maxp, minp), 1)
-  local write = false
+  local write
   local wetness = 0
 
   local avg = (minp.y + maxp.y) / 2
   local out_of_range
-  if avg > geomoria_mod.geomoria_depth * 80 - 32 then
+  if avg > geomoria.geomoria_depth * 80 - 32 then
     out_of_range = true
   end
 
   local index = 0
   local index3d = 0
 
-  local plan_name = geomoria_mod.plans_keys[math.random(#geomoria_mod.plans_keys)]
-  local plan = geomoria_mod.plans[plan_name]
+  local plan_name = geomoria.plans_keys[math.random(#geomoria.plans_keys)]
+  local plan = geomoria.plans[plan_name]
   local rot = math.random(4) - 1
 
-  local exit_stair = (minp.z % (csize.z * 10)) < csize.z and (minp.x % (csize.x * 10)) < csize.x
+  local exit_stair = geomoria.exit_stair(minp, maxp)
   if out_of_range then
-    plan = geomoria_mod.stair_height
+    plan = geomoria.stair_height
     rot = 0
   elseif exit_stair then
-    plan = geomoria_mod.stair_base
+    plan = geomoria.stair_base
     rot = 0
+  end
+
+  if not plan then
+    print('Geomoria: Failed to select a plan.')
   end
 
   if not out_of_range then
@@ -82,7 +91,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
             for dx = min_x - 2, max_x + 2 do
               if dx >= 0 and dx <= 79 and dy >= 0 and dy <= 79 and dz >= 0 and dz <= 79 then
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                data[ivm] = node['default:stone']
+                data[ivm] = node[building_stone]
               end
             end
           end
@@ -161,13 +170,13 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
           end
         end
 
-        if geomoria_mod.cheap_lighting and item.node == 'air' then
+        if geomoria.cheap_lighting and item.node == 'air' then
           if coords[4] < 13 and coords[2] > 10 and coords[6] > 10 then
             for dz = min_z, max_z do
               for dx = min_x, max_x do
                 if dx % 8 == 0 and dz % 8 == 0 then
                   local ivm = area:index(minp.x + dx, minp.y + coords[3] + coords[4], minp.z + dz)
-                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
@@ -179,7 +188,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
               for dx = min_x, max_x do
                 if dx % 10 == 0 then
                   local ivm = area:index(minp.x + dx, alt, minp.z + dz)
-                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
@@ -189,7 +198,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
               for dx = min_x - 1, max_x + 1, max_x - min_x + 2 do
                 if dz % 10 == 0 then
                   local ivm = area:index(minp.x + dx, alt, minp.z + dz)
-                  if data[ivm] == node['default:stone'] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
@@ -223,7 +232,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
           local x = minp.x + min_x + math.random(max_x - min_x + 1) - 1
           local y = minp.y + coords[3]
           local z = minp.z + min_z + math.random(max_z - min_z + 1) - 1
-          local n = geomoria_mod.treasure_chest_hook({x=x, y=y, z=z}, min_x, max_x, min_z, max_z, data, area, node)
+          local n = geomoria.treasure_chest_hook({x=x, y=y, z=z}, min_x, max_x, min_z, max_z, data, area, node)
           if type(n) == 'number' then
             local ivm = area:index(x, y, z)
             data[ivm] = n
@@ -254,7 +263,7 @@ geomoria_mod.geomorph = function(minp, maxp, data, p2data, area, node, heightmap
             for y = y1, dy - 1 do
               if not height or (minp.y + y) <= height then
                 local ivm = area:index(minp.x + dx, minp.y + y, minp.z + dz)
-                data[ivm] = node['default:stone']
+                data[ivm] = node[building_stone]
               end
             end
 
