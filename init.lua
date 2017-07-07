@@ -153,6 +153,8 @@ do
   node = geomoria.clone_node('default:stone')
   node.drop = 'default:cobble'
   minetest.register_node('geomoria:stone', node)
+  node = table.copy(node)
+  minetest.register_node('geomoria:stone2', node)
 
   geomoria.ground_nodes = {}
   local ground_nodes_names = {

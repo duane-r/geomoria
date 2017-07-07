@@ -9,8 +9,10 @@
 
 
 local building_stone = 'geomoria:stone'
+local building_stone_no_spawn = 'geomoria:stone2'
 if geomoria.generate_ores then
   building_stone = 'default:stone'
+  building_stone_no_spawn = 'default:stone'
 end
 
 
@@ -91,7 +93,11 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
             for dx = min_x - 2, max_x + 2 do
               if dx >= 0 and dx <= 79 and dy >= 0 and dy <= 79 and dz >= 0 and dz <= 79 then
                 local ivm = area:index(minp.x + dx, minp.y + dy, minp.z + dz)
-                data[ivm] = node[building_stone]
+                if dy <= min_y then
+                  data[ivm] = node[building_stone]
+                else
+                  data[ivm] = node[building_stone_no_spawn]
+                end
               end
             end
           end
@@ -176,7 +182,7 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
               for dx = min_x, max_x do
                 if dx % 8 == 0 and dz % 8 == 0 then
                   local ivm = area:index(minp.x + dx, minp.y + coords[3] + coords[4], minp.z + dz)
-                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node[building_stone_no_spawn] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
@@ -188,7 +194,7 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
               for dx = min_x, max_x do
                 if dx % 10 == 0 then
                   local ivm = area:index(minp.x + dx, alt, minp.z + dz)
-                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node[building_stone_no_spawn] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
@@ -198,7 +204,7 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
               for dx = min_x - 1, max_x + 1, max_x - min_x + 2 do
                 if dz % 10 == 0 then
                   local ivm = area:index(minp.x + dx, alt, minp.z + dz)
-                  if data[ivm] == node[building_stone] or data[ivm] == node['default:stone_block'] then
+                  if data[ivm] == node[building_stone] or data[ivm] == node[building_stone_no_spawn] or data[ivm] == node['default:stone_block'] then
                     data[ivm] = node['default:meselamp']
                   end
                 end
