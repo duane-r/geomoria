@@ -16,7 +16,7 @@ if geomoria.generate_ores then
 end
 
 
-geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
+geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap, seed)
   if not (minp and maxp and data and p2data and area and node and type(data) == 'table' and type(p2data) == 'table') then
     return
   end
@@ -38,9 +38,15 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
   local index = 0
   local index3d = 0
 
-  local plan_name = geomoria.plans_keys[math.random(#geomoria.plans_keys)]
+  local bc = {}
+  bc.x = math.floor((minp.x + 32) / 8000)
+  bc.y = math.floor((minp.y + 32) / 8000)
+  bc.z = math.floor((minp.z + 32) / 8000)
+  local pr = PcgRandom((seed % 64000) + (bc.x % 100) * 10000 + (bc.y % 100) * 100 + (bc.z % 100))
+
+  local plan_name = geomoria.plans_keys[pr:next(1, #geomoria.plans_keys)]
   local plan = geomoria.plans[plan_name]
-  local rot = math.random(4) - 1
+  local rot = pr:next(1, 4) - 1
 
   local exit_stair = geomoria.exit_stair(minp, maxp)
   if out_of_range then
@@ -239,7 +245,7 @@ geomoria.geomorph = function(minp, maxp, data, p2data, area, node, heightmap)
           local y = minp.y + coords[3]
           local z = minp.z + min_z + math.random(max_z - min_z + 1) - 1
           local n = geomoria.treasure_chest_hook({x=x, y=y, z=z}, min_x, max_x, min_z, max_z, data, area, node)
-          if type(n) == 'number' then
+          if n and type(n) == 'number' then
             local ivm = area:index(x, y, z)
             data[ivm] = n
           end

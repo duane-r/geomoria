@@ -51,13 +51,27 @@ geomoria.treasure_chest = treasure_chest
 --  'min/max' values are the coordinates of the room or hall.
 --  'data' is the mapgen data for that chunk.
 --  'area' is the VoxelArea structure for the chunk.
--- The function must return the get_content_id value for a node.
+-- The function may return the get_content_id value for a node,
+--  which will be placed via voxelmanip.
 --
 -- If you override this, it might make sense to save the original
 --  function and call it, in case someone else overrides it.
 --  However, there can be only one return value.
-function geomoria.treasure_chest_hook(pos, min_x, max_x, min_z, max_z, data, area, node)
-  return node[treasure_chest]
+if minetest.registered_items['booty:coffer'] then
+  function geomoria.treasure_chest_hook(pos, min_x, max_x, min_z, max_z, data, area, node)
+    minetest.after(0, function(pos)
+      local n = minetest.get_node_or_nil(pos)
+      if not n then
+        print('Booty: Failed to place treasure at '..dump(pos))
+      elseif n.name ~= 'air' then
+        booty.place_chest(pos)
+      end
+    end, pos)
+  end
+else
+  function geomoria.treasure_chest_hook(pos, min_x, max_x, min_z, max_z, data, area, node)
+    return node[treasure_chest]
+  end
 end
 
 

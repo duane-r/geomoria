@@ -59,7 +59,7 @@ local function generate(p_minp, p_maxp, seed)
     fissure_noise = fissure_noise_map:get3dMap_flat(minp, fissure_noise)
   end
 
-  local write, wetness = geomoria.geomorph(minp, maxp, data, p2data, area, node, heightmap)
+  local write, wetness = geomoria.geomorph(minp, maxp, data, p2data, area, node, heightmap, seed)
 
   if not write then
     return
