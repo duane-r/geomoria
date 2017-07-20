@@ -16,14 +16,6 @@ geomoria.max_x = 31000
 geomoria.max_z = 31000
 
 
-local mobs_base
-if minetest.get_modpath('mobs_dw') then
-  mobs_base = mobs_dw
-elseif minetest.get_modpath('mobs') then
-  mobs_base = mobs
-end
-
-
 -- Dungeon overgeneration puts mossycobble in inappropriate places.
 minetest.set_mapgen_setting('mg_flags', "nodungeons", true)
 
@@ -195,11 +187,11 @@ do
 end
 
 
-if mobs_base then
+if minetest.get_modpath('mobs') then
   for name, def in pairs(minetest.registered_entities) do
     if def.type == 'monster' and type(def.hp_max) == 'number' and (not def.fly_in or def.fly_in == 'air') then
       local armor = (def.armor or 100) / 100
-      mobs_base:spawn({
+      mobs:spawn({
         name = name,
         nodes = {"geomoria:stone", 'default:stone_block'},
         chance = math.floor(3000 * (def.hp_max / armor)),

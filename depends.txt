@@ -4,6 +4,6 @@ stairs
 booty?
 mobs_duane?
 fun_caves?
-mobs_dw?
+mobs?
 mobs_goblins?
 squaresville?
