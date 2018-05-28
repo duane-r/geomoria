@@ -8,6 +8,7 @@ local max_depth = 31000
 local geomoria_depth = geomoria.geomoria_depth
 local ground_nodes = geomoria.ground_nodes
 local math_random = math.random
+local node = geomoria.node
 
 
 local data = {}
